@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ajouterBtn {
+  align-self: flex-end;
+  margin-right: 10px;
+}
+
+.rendu {
+  color: green;
+}
+
+.nonrendu {
+  color: red;
+  background-color: yellow;
+  border: 2px dashed orange;
+  padding: 2px;
+}
+
+
+.gros {
+  font-size: 40px;
+}
+
+.example-viewport {
+  height: 600px;
+  width: 800px;
+  border: 1px solid black;
+}
+
+.example-item {
+  height: 30px !important;
+}

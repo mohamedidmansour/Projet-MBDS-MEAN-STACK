@@ -1,0 +1,13 @@
+<h1>
+  <nav>
+    <a routerLink="/home">{{titre}}</a>
+  </nav>
+</h1>
+<p><button mat-flat-button color="primary" (click)="peuplerLaBase();">Peupler la base</button>
+</p>
+
+<mat-slide-toggle color="primary" (click)="login()">Log In</mat-slide-toggle>
+<!--
+<app-assignments></app-assignments>
+-->
+<router-outlet></router-outlet>
