@@ -1,4 +1,73 @@
-<div class="container">
+<mat-drawer-container class="example-container" autosize style="background-color: #F4F3EF;">
+    <mat-drawer #drawer class="example-sidenav" mode="side" style="background-color: #FFFFFF;color:#A29F9B">
+      <div class="logo-image-small">
+        <img src="http://miageprojet2.unice.fr/@api/deki/site/logo.png">
+      </div>
+      <p style="color:#66615B;">Auto-resizing sidenav</p>
+      <mat-selection-list [multiple]="false">
+        <mat-list-option style="color:#66615B;">
+          item 1 item
+        </mat-list-option>
+        <mat-list-option style="color:#66615B;">
+          item 2 item
+        </mat-list-option>
+        <mat-list-option style="color:#66615B;">
+          item 3 item
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <mat-toolbar class="header-v1">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
+          <mat-icon style="color:#66615B;">menu</mat-icon>
+        </button>
+        <span style="color:#66615B;">MBDS App</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <mat-icon style="color:#66615B;">favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon style="color:#66615B;">share</mat-icon>
+        </button>
+      </mat-toolbar>
+      <div class="container">
+        <section class="row">
+          <mat-card class="col-xl-8 col-md-12 offset-xl-2 div-con style-text" *ngIf="assignmentTransmis">
+              <mat-card-title >{{assignmentTransmis.nom}}</mat-card-title>
+              <mat-card-subtitle class="style-text">{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
+              <div id="bottom" class="row">
+                <div class="col-md-4">
+                    <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">
+                      Devoir rendu
+                    </mat-checkbox>
+                </div>
+                <div class="col-md-4">
+                    <button mat-flat-button  class="edit-button" [disabled]="!loggedIn()" (click)="onClickEdit()">
+                      EDIT
+                    </button>  
+                </div>
+                <div class="col-md-4">
+                    <button mat-flat-button  class="delete-button" [disabled]="!loggedIn()"  (click)="onDelete()">
+                      DELETE
+                    </button>  
+                </div>
+              </div>
+          </mat-card>
+        </section>
+      </div>
+    </div>
+  
+  </mat-drawer-container>
+
+
+
+
+
+
+
+
+<!-- <div class="container">
   <mat-card *ngIf="assignmentTransmis">
     <mat-card-title>{{assignmentTransmis.nom}}</mat-card-title>
     <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
@@ -16,4 +85,4 @@
       </button>
     </div>
   </mat-card>
-</div>
+</div> -->

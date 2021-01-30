@@ -1,29 +1,85 @@
-<main class="container">
-  <nav>
-    <a routerLink="/add">
-      <button mat-flat-button color="accent" class="ajouterBtn">
-        Ajouter Assignment
+<mat-drawer-container class="example-container" autosize style="background-color: #F4F3EF;">
+  <mat-drawer #drawer class="example-sidenav" mode="side" style="background-color: #FFFFFF;color:#A29F9B">
+    <div class="logo-image-small">
+      <img src="http://miageprojet2.unice.fr/@api/deki/site/logo.png">
+    </div>
+    <p style="color:#66615B;">Auto-resizing sidenav</p>
+    <mat-selection-list [multiple]="false">
+      <mat-list-option style="color:#66615B;">
+        item 1 item
+      </mat-list-option>
+      <mat-list-option style="color:#66615B;">
+        item 2 item
+      </mat-list-option>
+      <mat-list-option style="color:#66615B;">
+        item 3 item
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <mat-toolbar class="header-v1">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
+        <mat-icon style="color:#66615B;">menu</mat-icon>
       </button>
-    </a>
-  </nav>
-  <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" #scroller>
+      <span style="color:#66615B;">MBDS App</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon style="color:#66615B;">favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon style="color:#66615B;">share</mat-icon>
+      </button>
+    </mat-toolbar>
+      <div class="container" style="margin: 5px;">
+          <div class="row">
+            <div class="col-md-6">
+                <mat-slide-toggle color="primary" (click)="login()">Log In</mat-slide-toggle>
+            </div>
+            <div class="col-md-6">
+                <a routerLink="/add">
+                  <button mat-flat-button class="ajouterBtn">
+                    Ajouter Assignment
+                  </button>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" #scroller>
+                  <div class="row">
+                    <div class="col-md-4" *cdkVirtualFor="let a of assignments" style="padding: 5px;">
+                      <mat-card class="example-card">
+                        <mat-card-header class="row"> 
+                          <div class="col-md-9">
+                          <mat-card-subtitle class="rendu">Date de rendu : {{a.dateDeRendu | date}}</mat-card-subtitle>
+                            </div>
+                          <div class="col-md-3 example-header-image">
+                            <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" mat-card-avatar  alt="Photo of a Shiba Inu">
+                          </div>
+                          <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+                        </mat-card-header>
+                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                        <mat-card-content class="card-con">
+                            <p class="alert alert-dark" *ngIf="a.rendu; else nonsoumis">Devoir intitulé {{a.nom}} rendu.</p>
+                            <ng-template #nonsoumis>
+                              <p class="alert alert-danger" [ngClass]="{nonrendu:true}">le devoir {{a.nom}} n'a pas été rendu...</p>
+                            </ng-template>
+                        </mat-card-content>
+                        <mat-card-actions>
+                          <button mat-raised-button  routerLink="/assignment/{{a.id}}">Update</button>
+                        </mat-card-actions>
+                      </mat-card>
+                    </div>
+                  </div>
+                  </cdk-virtual-scroll-viewport>
+            </div>
+          </div>
+      </div>
+  </div>
 
-    <mat-list *cdkVirtualFor="let a of assignments">
-      <h3 mat-subheader>Date de rendu : {{a.dateDeRendu | date}}</h3>
-      <nav>
-        <a routerLink="/assignment/{{a.id}}">
-          <mat-list-item (click)="assignmentClique(a);" class="example-item">
-            <p appRendu *ngIf="a.rendu; else nonsoumis">
-              Devoir intitulé {{a.nom}} rendu.
-            </p>
+</mat-drawer-container>
 
-            <ng-template #nonsoumis>
-              <p [ngClass]="{nonrendu:true}">le devoir {{a.nom}} n'a pas été rendu...</p>
-            </ng-template>
-            <mat-divider></mat-divider>
-          </mat-list-item>
-        </a>
-      </nav>
-    </mat-list>
-  </cdk-virtual-scroll-viewport>
-</main>
+
+
+
+
+

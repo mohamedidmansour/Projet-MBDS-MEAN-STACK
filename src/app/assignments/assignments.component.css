@@ -5,20 +5,31 @@
 
 .ajouterBtn {
   align-self: flex-end;
-  margin-right: 10px;
+  margin: 10px;
+  float: right;
+  width: 33%
+}
+
+.card-bo
+{
+  background-color: #E3E3E3;
 }
 
 .rendu {
-  color: green;
+  color:#66615B;
 }
 
 .nonrendu {
   color: red;
-  background-color: yellow;
-  border: 2px dashed orange;
+  /* background-color: yellow;
+  border: 2px dashed orange; */
   padding: 2px;
 }
 
+.header-v1
+{
+ background-color: #F4F3EF;
+}
 
 .gros {
   font-size: 40px;
@@ -26,10 +37,27 @@
 
 .example-viewport {
   height: 600px;
-  width: 800px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .example-item {
   height: 30px !important;
 }
+.example-card {
+  /* max-width: 300px; */
+  max-height: 540px;
+  height: 540px;
+  background-color: #E3E3E3;
+}
+
+.example-header-image {
+  background-size: cover;
+  position: relative;
+  bottom: 5px;
+}
+.card-con
+{
+  height: 100px;
+  max-height: 100px;
+}
+
