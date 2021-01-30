@@ -26,7 +26,7 @@ export class LoginPageComponent implements OnInit {
     if (!this.authService.loggedIn) {
       this.authService.logIn(this.username, this.password);
     } else {
-      this.authService.logOut();
+      // this.authService.logOut();
       this.router.navigate(['/home']);
     }
   }

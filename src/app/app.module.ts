@@ -32,20 +32,20 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {
     path: 'home', component: AssignmentsComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'add', component: AddAssignmentComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'assignment/:id', component: AssignmentDetailComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'assignment/:id/edit',
     component: EditAssigmentComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
 ];
 
