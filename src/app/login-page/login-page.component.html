@@ -1,0 +1,42 @@
+<div class="container">
+  <section class="row">
+    <mat-card class="col-xl-8 col-md-12 offset-xl-2">
+      <mat-card-header>
+        <mat-card-title><h1>Sign In</h1></mat-card-title>
+      </mat-card-header>
+      <form ngForm #loginForm>
+        <mat-card-content class="row">
+          <div class="col-xl-8 offset-xl-4">
+            <img width="100" class="img-login" height="110" [src]="'assets/img/user.png'"
+                 alt="Photo of a Shiba Inu">
+
+          </div>
+          <mat-form-field class="col-md-12">
+            <input matInput type="text"
+                   placeholder="Username"
+                   required
+                   [(ngModel)]="username"
+                   minlength="4"
+                   maxlength="10"
+                   name="username">
+          </mat-form-field>
+          <mat-form-field class="col-md-12">
+            <input matInput type="password"
+                   placeholder="Password"
+                   required
+                   minlength="4"
+                   maxlength="10"
+                   [(ngModel)]="password"
+                   name="password"
+            >
+          </mat-form-field>
+          <button mat-stroked-button color="primary" class="btn-block"
+                  [disabled]="!loginForm.checkValidity()"
+                  (click)="onLogin($event);
+                  loginForm.reset();">Sign-in
+          </button>
+        </mat-card-content>
+      </form>
+    </mat-card>
+  </section>
+</div>

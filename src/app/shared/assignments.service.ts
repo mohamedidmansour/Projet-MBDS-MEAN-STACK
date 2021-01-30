@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Assignment } from '../assignments/assignment.model';
-import { forkJoin, Observable, of } from 'rxjs';
-import { LoggingService } from './logging.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
-import { bdInitialAssignments } from './data';
+import {Injectable} from '@angular/core';
+import {Assignment} from '../assignments/assignment.model';
+import {forkJoin, Observable, of} from 'rxjs';
+import {LoggingService} from './logging.service';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError, map, tap} from 'rxjs/operators';
+import {bdInitialAssignments} from './data';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +34,8 @@ export class AssignmentsService {
   constructor(
     private loggingService: LoggingService,
     private http: HttpClient
-  ) {}
+  ) {
+  }
 
   //url = 'https://apimbds2021.herokuapp.com/api/assignments';
   url = 'http://localhost:8010/api/assignments';
@@ -92,6 +93,7 @@ export class AssignmentsService {
     );
     */
   }
+
   private handleError<T>(operation: any, result?: T) {
     return (error: any): Observable<T> => {
       console.log(error); // pour afficher dans la console
