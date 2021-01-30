@@ -28,11 +28,20 @@ import {HttpClientModule} from '@angular/common/http';
 import {LoginPageComponent} from './login-page/login-page.component';
 
 const routes: Routes = [
-  {path: '', component: AssignmentsComponent},
+  {path: '', component: LoginPageComponent},
   {path: 'login', component: LoginPageComponent},
-  {path: 'home', component: AssignmentsComponent},
-  {path: 'add', component: AddAssignmentComponent},
-  {path: 'assignment/:id', component: AssignmentDetailComponent},
+  {
+    path: 'home', component: AssignmentsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'add', component: AddAssignmentComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'assignment/:id', component: AssignmentDetailComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'assignment/:id/edit',
     component: EditAssigmentComponent,
