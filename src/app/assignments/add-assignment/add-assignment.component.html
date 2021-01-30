@@ -1,17 +1,60 @@
-<form ngForm class="form" #assignmentForm>
-  <mat-form-field>
-    <input matInput placeholder="Entrez un nom" [(ngModel)]="nomDevoir" name="nom">
-  </mat-form-field>
-
-  <mat-form-field>
-    <input matInput [matDatepicker]="datepicker" [(ngModel)]="dateDeRendu" name="date">
-
-    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-    <mat-datepicker #datepicker></mat-datepicker>
-
-  </mat-form-field>
-
-  <button mat-stroked-button color="primary" (click)="onSubmit($event); assignmentForm.reset();">
-    Ajouter un devoir
-  </button>
-</form>
+<mat-drawer-container class="example-container" autosize style="background-color: #F4F3EF;">
+    <mat-drawer #drawer class="example-sidenav" mode="side" style="background-color: #FFFFFF;color:#A29F9B">
+      <div class="logo-image-small">
+        <img src="http://miageprojet2.unice.fr/@api/deki/site/logo.png">
+      </div>
+      <p style="color:#66615B;">Auto-resizing sidenav</p>
+      <mat-selection-list [multiple]="false">
+        <mat-list-option style="color:#66615B;">
+          item 1 item
+        </mat-list-option>
+        <mat-list-option style="color:#66615B;">
+          item 2 item
+        </mat-list-option>
+        <mat-list-option style="color:#66615B;">
+          item 3 item
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <mat-toolbar class="header-v1">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
+          <mat-icon style="color:#66615B;">menu</mat-icon>
+        </button>
+        <span style="color:#66615B;">MBDS App</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <mat-icon style="color:#66615B;">favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon style="color:#66615B;">share</mat-icon>
+        </button>
+      </mat-toolbar>
+      <div class="container">
+        <section class="row">
+          <mat-card class="col-xl-8 col-md-12 offset-xl-2 div-con">
+            <mat-card-header>
+              <mat-card-title><h1>Ajouter Devoir</h1></mat-card-title>
+            </mat-card-header>
+            <form ngForm class="form" #assignmentForm>
+              <mat-card-content class="row">
+                <mat-form-field class="col-md-12">
+                  <input matInput placeholder="Entrez un nom" [(ngModel)]="nomDevoir" name="nom">
+                </mat-form-field>
+                <mat-form-field class="col-md-12">
+                  <input matInput [matDatepicker]="datepicker" placeholder="Entrez Date de Rendue" [(ngModel)]="dateDeRendu" name="date">
+                  <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                  <mat-datepicker #datepicker></mat-datepicker>
+                </mat-form-field>
+                <button mat-stroked-button class="btn-block" (click)="onSubmit($event); assignmentForm.reset();">
+                  Ajouter un devoir
+                </button>
+              </mat-card-content>
+            </form>
+          </mat-card>
+        </section>
+      </div>
+    </div>
+  
+  </mat-drawer-container>

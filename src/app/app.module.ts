@@ -25,6 +25,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { EditAssigmentComponent } from './assignments/edit-assigment/edit-assigment.component';
 import { AuthGuard } from './shared/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { HeaderComponent } from './masterPage/header/header.component';
+import { LeftBareComponent } from './masterPage/left-bare/left-bare.component';
+import { FooterComponent } from './masterPage/footer/footer.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 const routes: Routes = [
   { path: '', component: AssignmentsComponent },
@@ -45,6 +52,9 @@ const routes: Routes = [
     AssignmentDetailComponent,
     AddAssignmentComponent,
     EditAssigmentComponent,
+    HeaderComponent,
+    LeftBareComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +74,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule,
     ScrollingModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent],

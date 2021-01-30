@@ -1,9 +1,94 @@
-.container {
+/* .container {
   margin: 20px;
-}
+} */
 
-#bottom {
+/* #bottom {
   display:flex;
   justify-content: space-between;
   align-items: flex-end;
+} */
+.card-size
+{
+  width: 500px;
+  height: 380px;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  height: 380px;
+  
+}
+
+.example-sidenav
+{
+  height: 100%;
+}
+.header-v1
+{
+ background-color: #F4F3EF;
+}
+
+.pt-form-login{
+  margin-top: 100px;
+}
+.row{
+  padding: 30px;
+}
+h1{
+font-size: xx-large;
+color: #66615B;
+}
+*{
+  font-size: large;
+}
+.btn-block{
+  padding: 10px;
+  width: 50%;
+  position: relative;
+  left: 25%;
+  background-color:  #66615B;
+}
+.div-con
+{
+  background-color: #E3E3E3;
+  height: 460px;
+}
+input{
+  color: #66615B;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #66615B !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #66615B !important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: #66615B !important;;
+}
+
+.style-text
+{
+  color: #66615B;
+}
+.edit-button
+{
+  color: azure;
+  background-color: gold;
+
+}
+
+.delete-button
+{
+  color: azure;
+  background-color: red
+  
+}
+

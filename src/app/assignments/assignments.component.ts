@@ -3,6 +3,8 @@ import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { filter, map, pairwise, tap, throttleTime } from 'rxjs/operators';
 import { AssignmentsService } from '../shared/assignments.service';
 import { Assignment } from './assignment.model';
+import { Router } from '@angular/router';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-assignments',
@@ -14,6 +16,8 @@ export class AssignmentsComponent implements OnInit {
   assignments: Assignment[] = [];
   assignmentSelectionne: Assignment;
 
+
+  showFiller = false;
   // Pour la pagination
   page: Number;
   nextPage: Number = 1;
@@ -24,8 +28,11 @@ export class AssignmentsComponent implements OnInit {
 
   constructor(
     private assignmentsService: AssignmentsService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private authService: AuthService,
+    private router: Router
   ) {}
+
 
   ngOnInit(): void {
     /*
@@ -47,7 +54,17 @@ export class AssignmentsComponent implements OnInit {
         this.nextPage = data.nextPage;
         this.countAssignments = data.totalDocs;
         this.assignments = this.assignments.concat(data.docs);
+        console.log(this.assignments)
       });
+  }
+
+  login() {
+    if (!this.authService.loggedIn) {
+      this.authService.logIn();
+    } else {
+      this.authService.logOut();
+      this.router.navigate(['/home']);
+    }
   }
 
   ngAfterViewInit() {
