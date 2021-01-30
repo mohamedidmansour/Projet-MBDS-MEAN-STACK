@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    //return true; // signifie "toujours activé/autorisé"
+    // return true; // signifie "toujours activé/autorisé"
 
     return this.authService.isAdmin().then((authentifie: Boolean) => {
       // ici on traite la valeur retournée par la promesse
@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate {
         return true; // on autorise la navigation
       } else {
         console.log('NON AUTORISE A NAVIGUER');
-        this.router.navigate(['/home']);
+        this.router.navigate(['/login']);
         return false;
       }
     });

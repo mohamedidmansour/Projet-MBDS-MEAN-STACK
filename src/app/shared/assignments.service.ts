@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Assignment } from '../assignments/assignment.model';
-import { forkJoin, Observable, of } from 'rxjs';
-import { LoggingService } from './logging.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
-import { bdInitialAssignments } from './data';
+import {Injectable} from '@angular/core';
+import {Assignment} from '../assignments/assignment.model';
+import {forkJoin, Observable, of} from 'rxjs';
+import {LoggingService} from './logging.service';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError, map, tap} from 'rxjs/operators';
+import {bdInitialAssignments} from './data';
 
 @Injectable({
   providedIn: 'root',
@@ -30,13 +30,21 @@ export class AssignmentsService {
       rendu: false,
     },
   ];
+  // passe headers value like content type or authorization
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token') // get token value to verify is correct or no
+    })
+  };
 
   constructor(
     private loggingService: LoggingService,
     private http: HttpClient
-  ) {}
+  ) {
+  }
 
-  //url = 'https://apimbds2021.herokuapp.com/api/assignments';
+  // url = 'https://apimbds2021.herokuapp.com/api/assignments';
   url = 'http://localhost:8010/api/assignments';
 
   getAssignments(): Observable<Assignment[]> {
@@ -45,7 +53,7 @@ export class AssignmentsService {
 
     // return of(this.assignments);
 
-    return this.http.get<Assignment[]>(this.url);
+    return this.http.get<Assignment[]>(this.url, this.httpOptions);
   }
 
   getAssignmentsPagine(
@@ -55,7 +63,7 @@ export class AssignmentsService {
     let urlPagination = this.url + `?page=${nextPage}&limit=${limit}`;
 
     console.log('Requête paginée envoyée : ' + urlPagination);
-    return this.http.get<Object>(urlPagination);
+    return this.http.get<Object>(urlPagination, this.httpOptions);
   }
 
   getAssignment(id: number): Observable<Assignment> {
@@ -73,8 +81,8 @@ export class AssignmentsService {
     });
     return of(assignmentTrouve);
 */
-    //return of(this.assignments.find((a) => a.id === id));
-    return this.http.get<Assignment>(this.url + '/' + id);
+    // return of(this.assignments.find((a) => a.id === id));
+    return this.http.get<Assignment>(this.url + '/' + id, this.httpOptions);
     /*
     .pipe(
       map((a) => {
@@ -92,6 +100,7 @@ export class AssignmentsService {
     );
     */
   }
+
   private handleError<T>(operation: any, result?: T) {
     return (error: any): Observable<T> => {
       console.log(error); // pour afficher dans la console
@@ -105,7 +114,7 @@ export class AssignmentsService {
     // this.assignments.push(assignment);
     this.loggingService.log(assignment.nom, 'a été ajouté');
 
-    return this.http.post(this.url, assignment);
+    return this.http.post(this.url, assignment, this.httpOptions);
   }
 
   updateAssignment(assignment: Assignment): Observable<any> {
@@ -118,7 +127,7 @@ export class AssignmentsService {
     */
     this.loggingService.log(assignment.nom, 'a été mis à jour');
 
-    return this.http.put(this.url, assignment);
+    return this.http.put(this.url, assignment, this.httpOptions);
   }
 
   deleteAssignment(assignment: Assignment): Observable<any> {
@@ -133,7 +142,7 @@ export class AssignmentsService {
     */
     this.loggingService.log(assignment.nom, 'a été supprimé');
 
-    return this.http.delete(this.url + '/' + assignment._id);
+    return this.http.delete(this.url + '/' + assignment._id, this.httpOptions);
   }
 
   peuplerBase() {
