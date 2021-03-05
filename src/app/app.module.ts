@@ -31,6 +31,7 @@ import {EditAssigmentComponent} from './assignments/edit-assigment/edit-assigmen
 import {AuthGuard} from './shared/auth.guard';
 import {HttpClientModule} from '@angular/common/http';
 import {LoginPageComponent} from './login-page/login-page.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 const routes: Routes = [
   {path: '', component: LoginPageComponent},
@@ -96,7 +97,8 @@ const routes: Routes = [
     ScrollingModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

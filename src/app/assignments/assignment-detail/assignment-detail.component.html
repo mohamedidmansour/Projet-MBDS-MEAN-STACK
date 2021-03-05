@@ -54,54 +54,60 @@
                 </div>
               </div>
           </mat-card> -->
-          <mat-card class="col-xl-5 col-md-12 offset-xl-4 example-card" *ngIf="assignmentTransmis" color="primary">
-            <mat-card-header class="row"> 
-                <div class="col-md-9">
-                  <mat-card-subtitle class="rendu">Date de rendu : {{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
-                </div>
-              <div class="col-md-3 example-header-image">
-                
-                <img [src]="assignmentTransmis.matiere.imgProf" mat-card-avatar  alt="alt">
+          <mat-card class="col-md-12 example-card" *ngIf="assignmentTransmis" color="primary">
+            <div class="row">
+              <div class="col-md-4">
+                <mat-card-header class="row"> 
+                    <div class="col-md-10">
+                      <mat-card-subtitle class="rendu">Date Rendu: {{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
+                    </div>
+                  <div class="col-md-2 example-header-image">
+                    
+                    <img [src]="assignmentTransmis.matiere.imgProf" mat-card-avatar  alt="alt">
+                  </div>
+                  <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+                </mat-card-header>
+                <img mat-card-image [src]="assignmentTransmis.matiere.imgMat" alt="Photo of a Shiba Inu">
               </div>
-              <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
-            </mat-card-header>
-            <img mat-card-image [src]="assignmentTransmis.matiere.imgMat" alt="Photo of a Shiba Inu">
-            <mat-card-content class="card-con">
-                <p class="alert alert-dark" *ngIf="assignmentTransmis.rendu; else nonsoumis">Devoir intitulé {{assignmentTransmis.nom}} rendu.
-                  <br>
-                    Eleve : {{assignmentTransmis.auteur}}
-                  <th>
-                    Note : {{ assignmentTransmis.note }}
-                  </th>
-                </p>
-                <ng-template #nonsoumis>
-                  <p class="alert alert-danger" [ngClass]="{nonrendu:true}">le devoir {{assignmentTransmis.nom}} n'a pas été rendu...
-                    <br>
-                      Eleve : {{assignmentTransmis.auteur}}
-                  </p>
-                </ng-template>
-                <p class="alert alert-warning" *ngIf="assignmentTransmis.rendu; else nonsoumis">Le(s) remarque(s) : {{assignmentTransmis.remarques}}
-                </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <div id="bottom" class="row">
-                <div class="col-md-4">
-                    <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">
-                      Devoir rendu
-                    </mat-checkbox>
-                </div>
-                <div class="col-md-4">
-                    <button mat-flat-button  class="edit-button" [disabled]="!loggedIn()" (click)="onClickEdit()">
-                      EDIT
-                    </button>  
-                </div>
-                <div class="col-md-4">
-                    <button mat-flat-button  class="delete-button" [disabled]="!loggedIn()"  (click)="onDelete()">
-                      DELETE
-                    </button>  
-                </div>
-              </div>
-            </mat-card-actions>
+              <div class="col-md-8" style="padding-top: 10%;">  
+                  <mat-card-content class="card-con">
+                      <p class="alert alert-dark" *ngIf="assignmentTransmis.rendu; else nonsoumis">Devoir intitulé {{assignmentTransmis.nom}} rendu.
+                        <br>
+                          Eleve : {{assignmentTransmis.auteur}}
+                        <th>
+                          Note : {{ assignmentTransmis.note }}
+                        </th>
+                      </p>
+                      <ng-template #nonsoumis>
+                        <p class="alert alert-danger" [ngClass]="{nonrendu:true}">le devoir {{assignmentTransmis.nom}} n'a pas été rendu...
+                          <br>
+                            Eleve : {{assignmentTransmis.auteur}}
+                        </p>
+                      </ng-template>
+                      <p class="alert alert-warning">Le(s) remarque(s) : {{assignmentTransmis.remarques}}
+                      </p>
+                  </mat-card-content>
+                  <mat-card-actions>
+                    <div id="bottom" class="row">
+                      <div class="col-md-4">
+                          <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">
+                            Devoir rendu
+                          </mat-checkbox>
+                      </div>
+                      <div class="col-md-4">
+                          <button mat-flat-button  class="edit-button" [disabled]="!loggedIn()" (click)="onClickEdit()">
+                            EDIT
+                          </button>  
+                      </div>
+                      <div class="col-md-4">
+                          <button mat-flat-button  class="delete-button" [disabled]="!loggedIn()"  (click)="onDelete()">
+                            DELETE
+                          </button>  
+                      </div>
+                    </div>
+                  </mat-card-actions>
+              </div> 
+            </div>
           </mat-card>
         </section>
       </div>

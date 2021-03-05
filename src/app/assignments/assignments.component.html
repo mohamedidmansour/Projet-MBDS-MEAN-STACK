@@ -10,13 +10,13 @@
     </div>
     <mat-selection-list [multiple]="false">
       <mat-list-option>
-        item 1 item
+        Home
       </mat-list-option>
       <mat-list-option>
-        item 2 item
+        List Assignment
       </mat-list-option>
       <mat-list-option>
-        item 3 item
+        Ajouter Assignment
       </mat-list-option>
     </mat-selection-list>
   </mat-drawer>
@@ -57,11 +57,11 @@
                           <mat-card-subtitle class="rendu">Date de rendu : {{a.dateDeRendu | date}}</mat-card-subtitle>
                             </div>
                           <div class="col-md-3 example-header-image">
-                            <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" mat-card-avatar  alt="Photo of a Shiba Inu">
+                            <img [src]="a.matiere.imgProf" mat-card-avatar  alt="Photo of a Shiba Inu">
                           </div>
                           <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
                         </mat-card-header>
-                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                        <img mat-card-image [src]="a.matiere.imgMat" alt="Photo of a Shiba Inu">
                         <mat-card-content class="card-con">
                             <p class="alert alert-dark" *ngIf="a.rendu; else nonsoumis">Devoir intitulé {{a.nom}} rendu.
                               <br>
