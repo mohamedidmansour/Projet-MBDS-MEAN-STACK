@@ -10,26 +10,26 @@ import {bdInitialAssignments} from './data';
   providedIn: 'root',
 })
 export class AssignmentsService {
-  assignments: Assignment[] = [
-    {
-      id: 1,
-      nom: 'TP Angular 1 à rendre !',
-      dateDeRendu: new Date('01/02/2021'),
-      rendu: true,
-    },
-    {
-      id: 2,
-      nom: 'Projet MOPOLO SQL',
-      dateDeRendu: new Date('02/15/2021'),
-      rendu: false,
-    },
-    {
-      id: 3,
-      nom: 'Lange R à finir',
-      dateDeRendu: new Date('01/20/2021'),
-      rendu: false,
-    },
-  ];
+  // assignments: Assignment[] = [
+  //   {
+  //     id: 1,
+  //     nom: 'TP Angular 1 à rendre !',
+  //     dateDeRendu: new Date('01/02/2021'),
+  //     rendu: true,
+  //   },
+  //   {
+  //     id: 2,
+  //     nom: 'Projet MOPOLO SQL',
+  //     dateDeRendu: new Date('02/15/2021'),
+  //     rendu: false,
+  //   },
+  //   {
+  //     id: 3,
+  //     nom: 'Lange R à finir',
+  //     dateDeRendu: new Date('01/20/2021'),
+  //     rendu: false,
+  //   },
+  // ];
   // passe headers value like content type or authorization
   httpOptions = {
     headers: new HttpHeaders({

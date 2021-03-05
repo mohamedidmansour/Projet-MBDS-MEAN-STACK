@@ -1,39 +1,39 @@
-<mat-drawer-container class="example-container" autosize style="background-color: #F4F3EF;">
-    <mat-drawer #drawer class="example-sidenav" mode="side" style="background-color: #FFFFFF;color:#A29F9B">
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
       <div class="logo-image-small">
         <img src="http://miageprojet2.unice.fr/@api/deki/site/logo.png">
       </div>
-      <p style="color:#66615B;">Auto-resizing sidenav</p>
+      <p>Auto-resizing sidenav</p>
       <mat-selection-list [multiple]="false">
-        <mat-list-option style="color:#66615B;">
+        <mat-list-option>
           item 1 item
         </mat-list-option>
-        <mat-list-option style="color:#66615B;">
+        <mat-list-option>
           item 2 item
         </mat-list-option>
-        <mat-list-option style="color:#66615B;">
+        <mat-list-option>
           item 3 item
         </mat-list-option>
       </mat-selection-list>
     </mat-drawer>
   
     <div class="example-sidenav-content">
-      <mat-toolbar class="header-v1">
+      <mat-toolbar color="primary">
         <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
-          <mat-icon style="color:#66615B;">menu</mat-icon>
+          <mat-icon>menu</mat-icon>
         </button>
-        <span style="color:#66615B;">MBDS App</span>
+        <span>MBDS App</span>
         <span class="example-spacer"></span>
         <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-          <mat-icon style="color:#66615B;">favorite</mat-icon>
+          <mat-icon>favorite</mat-icon>
         </button>
         <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-          <mat-icon style="color:#66615B;">share</mat-icon>
+          <mat-icon>share</mat-icon>
         </button>
       </mat-toolbar>
       <div class="container">
         <section class="row">
-          <mat-card class="col-xl-8 col-md-12 offset-xl-2 div-con style-text" *ngIf="assignmentTransmis">
+          <!-- <mat-card class="col-xl-8 col-md-12 offset-xl-2 div-con style-text" *ngIf="assignmentTransmis" color="primary">
               <mat-card-title >{{assignmentTransmis.nom}}</mat-card-title>
               <mat-card-subtitle class="style-text">{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
               <div id="bottom" class="row">
@@ -53,6 +53,55 @@
                     </button>  
                 </div>
               </div>
+          </mat-card> -->
+          <mat-card class="col-xl-5 col-md-12 offset-xl-4 example-card" *ngIf="assignmentTransmis" color="primary">
+            <mat-card-header class="row"> 
+                <div class="col-md-9">
+                  <mat-card-subtitle class="rendu">Date de rendu : {{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
+                </div>
+              <div class="col-md-3 example-header-image">
+                
+                <img [src]="assignmentTransmis.matiere.imgProf" mat-card-avatar  alt="alt">
+              </div>
+              <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+            </mat-card-header>
+            <img mat-card-image [src]="assignmentTransmis.matiere.imgMat" alt="Photo of a Shiba Inu">
+            <mat-card-content class="card-con">
+                <p class="alert alert-dark" *ngIf="assignmentTransmis.rendu; else nonsoumis">Devoir intitulé {{assignmentTransmis.nom}} rendu.
+                  <br>
+                    Eleve : {{assignmentTransmis.auteur}}
+                  <th>
+                    Note : {{ assignmentTransmis.note }}
+                  </th>
+                </p>
+                <ng-template #nonsoumis>
+                  <p class="alert alert-danger" [ngClass]="{nonrendu:true}">le devoir {{assignmentTransmis.nom}} n'a pas été rendu...
+                    <br>
+                      Eleve : {{assignmentTransmis.auteur}}
+                  </p>
+                </ng-template>
+                <p class="alert alert-warning" *ngIf="assignmentTransmis.rendu; else nonsoumis">Le(s) remarque(s) : {{assignmentTransmis.remarques}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <div id="bottom" class="row">
+                <div class="col-md-4">
+                    <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">
+                      Devoir rendu
+                    </mat-checkbox>
+                </div>
+                <div class="col-md-4">
+                    <button mat-flat-button  class="edit-button" [disabled]="!loggedIn()" (click)="onClickEdit()">
+                      EDIT
+                    </button>  
+                </div>
+                <div class="col-md-4">
+                    <button mat-flat-button  class="delete-button" [disabled]="!loggedIn()"  (click)="onDelete()">
+                      DELETE
+                    </button>  
+                </div>
+              </div>
+            </mat-card-actions>
           </mat-card>
         </section>
       </div>

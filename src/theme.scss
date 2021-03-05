@@ -1,0 +1,27 @@
+@import "../node_modules/@angular/material/theming";
+@include mat-core();
+
+$my-primary: mat-palette($mat-teal,800);
+$my-accent:  mat-palette($mat-pink,800);
+$my-warn:    mat-palette($mat-deep-orange);
+$my-theme: mat-light-theme($my-primary, $my-accent, $my-warn);
+@include angular-material-theme($my-theme);
+
+.alternative {
+    $my-primary: mat-palette($mat-amber, 800);
+    $my-accent: mat-palette($mat-light-green, 800);
+    $my-theme: mat-light-theme($my-primary, $my-accent);
+    @include angular-material-theme($my-theme);
+  }
+  .edite-btn {
+    $my-primary: mat-palette($mat-cyan, 600);
+    $my-accent: mat-palette($mat-light-green, 800);
+    $my-theme: mat-light-theme($my-primary, $my-accent);
+    @include angular-material-theme($my-theme);
+  }
+  .delete-btn {
+    $my-primary: mat-palette($mat-orange, 400);
+    $my-accent: mat-palette($mat-light-green, 800);
+    $my-theme: mat-light-theme($my-primary, $my-accent);
+    @include angular-material-theme($my-theme);
+  }

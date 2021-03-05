@@ -1,34 +1,34 @@
-<mat-drawer-container class="example-container" autosize style="background-color: #F4F3EF;">
-    <mat-drawer #drawer class="example-sidenav" mode="side" style="background-color: #FFFFFF;color:#A29F9B">
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
       <div class="logo-image-small">
         <img src="http://miageprojet2.unice.fr/@api/deki/site/logo.png">
       </div>
-      <p style="color:#66615B;">Auto-resizing sidenav</p>
+      <p>Auto-resizing sidenav</p>
       <mat-selection-list [multiple]="false">
-        <mat-list-option style="color:#66615B;">
+        <mat-list-option>
           item 1 item
         </mat-list-option>
-        <mat-list-option style="color:#66615B;">
+        <mat-list-option>
           item 2 item
         </mat-list-option>
-        <mat-list-option style="color:#66615B;">
+        <mat-list-option>
           item 3 item
         </mat-list-option>
       </mat-selection-list>
     </mat-drawer>
   
     <div class="example-sidenav-content">
-      <mat-toolbar class="header-v1">
+      <mat-toolbar color="primary">
         <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
-          <mat-icon style="color:#66615B;">menu</mat-icon>
+          <mat-icon>menu</mat-icon>
         </button>
-        <span style="color:#66615B;">MBDS App</span>
+        <span>MBDS App</span>
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-          <mat-icon style="color:#66615B;">favorite</mat-icon>
+        <button mat-icon-button class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
+          <mat-icon>favorite</mat-icon>
         </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-          <mat-icon style="color:#66615B;">share</mat-icon>
+        <button mat-icon-button class="example-icon Position-left" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
         </button>
       </mat-toolbar>
       <div class="container">
@@ -47,7 +47,7 @@
                   <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
                   <mat-datepicker #datepicker></mat-datepicker>
                 </mat-form-field>
-                <button mat-stroked-button class="btn-block" (click)="onSubmit($event); assignmentForm.reset();">
+                <button mat-flat-button color="primary" (click)="onSubmit($event); assignmentForm.reset();">
                   Ajouter un devoir
                 </button>
               </mat-card-content>

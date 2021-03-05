@@ -1,34 +1,38 @@
-<mat-drawer-container class="example-container" autosize style="background-color: #F4F3EF;">
-  <mat-drawer #drawer class="example-sidenav" mode="side" style="background-color: #FFFFFF;color:#A29F9B">
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
     <div class="logo-image-small">
-      <img src="http://miageprojet2.unice.fr/@api/deki/site/logo.png">
+      <!-- <img class="icone-leftbar" src="http://miageprojet2.unice.fr/@api/deki/site/logo.png"> -->
+      <nav class="navbar navbar-light bg-light logo-padding">
+        <a class="navbar-brand" href="#">
+          <img src="https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png" width="150" height="50" class="d-inline-block align-top" alt="">
+        </a>
+      </nav>
     </div>
-    <p style="color:#66615B;">Auto-resizing sidenav</p>
     <mat-selection-list [multiple]="false">
-      <mat-list-option style="color:#66615B;">
+      <mat-list-option>
         item 1 item
       </mat-list-option>
-      <mat-list-option style="color:#66615B;">
+      <mat-list-option>
         item 2 item
       </mat-list-option>
-      <mat-list-option style="color:#66615B;">
+      <mat-list-option>
         item 3 item
       </mat-list-option>
     </mat-selection-list>
   </mat-drawer>
 
   <div class="example-sidenav-content">
-    <mat-toolbar class="header-v1">
+    <mat-toolbar color="primary">
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
-        <mat-icon style="color:#66615B;">menu</mat-icon>
+        <mat-icon>menu</mat-icon>
       </button>
-      <span style="color:#66615B;">MBDS App</span>
+      <span>MBDS App</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon style="color:#66615B;">favorite</mat-icon>
+      <button mat-icon-button class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
       </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon style="color:#66615B;">share</mat-icon>
+      <button mat-icon-button class="example-icon Position-left" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
       </button>
     </mat-toolbar>
       <div class="container" style="margin: 5px;">
@@ -38,12 +42,12 @@
             </div>
             <div class="col-md-6">
                 <a routerLink="/add">
-                  <button mat-flat-button class="ajouterBtn">
+                  <button mat-flat-button class="ajouterBtn" color="primary">
                     Ajouter Assignment
                   </button>
                 </a>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12" color="primary">
                 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" #scroller>
                   <div class="row">
                     <div class="col-md-4" *cdkVirtualFor="let a of assignments" style="padding: 5px;">
@@ -59,13 +63,20 @@
                         </mat-card-header>
                         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
                         <mat-card-content class="card-con">
-                            <p class="alert alert-dark" *ngIf="a.rendu; else nonsoumis">Devoir intitulé {{a.nom}} rendu.</p>
+                            <p class="alert alert-dark" *ngIf="a.rendu; else nonsoumis">Devoir intitulé {{a.nom}} rendu.
+                              <br>
+                              Eleve : {{a.auteur}}
+                            </p>
                             <ng-template #nonsoumis>
-                              <p class="alert alert-danger" [ngClass]="{nonrendu:true}">le devoir {{a.nom}} n'a pas été rendu...</p>
+                              <p class="alert alert-danger" [ngClass]="{nonrendu:true}">le devoir {{a.nom}} n'a pas été rendu...
+                                <br>
+                                Eleve : {{a.auteur}}
+                              </p>
                             </ng-template>
                         </mat-card-content>
+            
                         <mat-card-actions>
-                          <button mat-raised-button  routerLink="/assignment/{{a.id}}">Update</button>
+                          <button color="primary" mat-raised-button  routerLink="/assignment/{{a.id}}">Details</button>
                         </mat-card-actions>
                       </mat-card>
                     </div>

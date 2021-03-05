@@ -3,3 +3,109 @@
   flex-direction: column;
   margin: 5px;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-v1
+{
+ background-color: #E3E3E3;
+}
+
+.div-con
+{
+  background-color: #E3E3E3;
+  height: 480px;
+}
+
+input{
+  color: #66615B;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #66615B !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #66615B !important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color: #66615B !important;;
+}
+
+.btn-block{
+  padding: 10px;
+  width: 50%;
+  position: relative;
+  left: 25%;
+  background-color:  #66615B;
+}
+
+.ajouterBtn {
+  align-self: flex-end;
+  margin: 10px;
+  float: right;
+  width: 33%
+}
+
+.card-bo
+{
+  background-color: #E3E3E3;
+}
+
+.rendu {
+  color:#66615B;
+}
+
+.nonrendu {
+  color: red;
+  /* background-color: yellow;
+  border: 2px dashed orange; */
+  padding: 2px;
+}
+
+.header-v1
+{
+ background-color: #F4F3EF;
+}
+
+.gros {
+  font-size: 40px;
+}
+
+.example-viewport {
+  height: 600px;
+  /* border: 1px solid black; */
+}
+
+.example-item {
+  height: 30px !important;
+}
+.example-card {
+  /* max-width: 300px; */
+  max-height: 540px;
+  height: 540px;
+  background-color: #E3E3E3;
+}
+
+.example-header-image {
+  background-size: cover;
+  position: relative;
+  bottom: 5px;
+}
+.card-con
+{
+  height: 100px;
+  max-height: 100px;
+}
+
+.style-text
+{
+  color: #66615B;
+}

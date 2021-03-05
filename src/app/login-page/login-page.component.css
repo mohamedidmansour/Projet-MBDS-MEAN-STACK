@@ -13,5 +13,11 @@ font-size: xx-large;
 .btn-block{
   padding: 10px;
   width: 100%;
+  background-color: #a5d6a7;
+  color:#1b5e20
+}
+.h1-style
+{
+  color:#1b5e20
 }
 
