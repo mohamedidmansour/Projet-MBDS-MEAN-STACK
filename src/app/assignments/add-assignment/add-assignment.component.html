@@ -1,60 +1,115 @@
 <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-      <div class="logo-image-small">
-        <img src="http://miageprojet2.unice.fr/@api/deki/site/logo.png">
-      </div>
-      <p>Auto-resizing sidenav</p>
-      <mat-selection-list [multiple]="false">
-        <mat-list-option>
-          item 1 item
-        </mat-list-option>
-        <mat-list-option>
-          item 2 item
-        </mat-list-option>
-        <mat-list-option>
-          item 3 item
-        </mat-list-option>
-      </mat-selection-list>
-    </mat-drawer>
-  
-    <div class="example-sidenav-content">
-      <mat-toolbar color="primary">
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>MBDS App</span>
-        <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
-          <mat-icon>favorite</mat-icon>
-        </button>
-        <button mat-icon-button class="example-icon Position-left" aria-label="Example icon-button with share icon">
-          <mat-icon>share</mat-icon>
-        </button>
-      </mat-toolbar>
-      <div class="container">
-        <section class="row">
-          <mat-card class="col-xl-8 col-md-12 offset-xl-2 div-con">
-            <mat-card-header>
-              <mat-card-title><h1>Ajouter Devoir</h1></mat-card-title>
-            </mat-card-header>
-            <form ngForm class="form" #assignmentForm>
-              <mat-card-content class="row">
-                <mat-form-field class="col-md-12">
-                  <input matInput placeholder="Entrez un nom" [(ngModel)]="nomDevoir" name="nom">
-                </mat-form-field>
-                <mat-form-field class="col-md-12">
-                  <input matInput [matDatepicker]="datepicker" placeholder="Entrez Date de Rendue" [(ngModel)]="dateDeRendu" name="date">
-                  <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-                  <mat-datepicker #datepicker></mat-datepicker>
-                </mat-form-field>
-                <button mat-flat-button color="primary" (click)="onSubmit($event); assignmentForm.reset();">
-                  Ajouter un devoir
-                </button>
-              </mat-card-content>
-            </form>
-          </mat-card>
-        </section>
-      </div>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="logo-image-small">
+      <img src="http://miageprojet2.unice.fr/@api/deki/site/logo.png">
     </div>
-  
-  </mat-drawer-container>
+    <p>Auto-resizing sidenav</p>
+    <mat-selection-list [multiple]="false">
+      <mat-list-option>
+        item 1 item
+      </mat-list-option>
+      <mat-list-option>
+        item 2 item
+      </mat-list-option>
+      <mat-list-option>
+        item 3 item
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>MBDS App</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon Position-left" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+    <div class="container">
+      <section class="row">
+        <mat-horizontal-stepper #stepper class="col-xl-8 offset-xl-2">
+          <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>étape N° 1</ng-template> 
+              <mat-form-field>
+                <mat-label>Nom</mat-label>
+                <input matInput placeholder="Nom" formControlName="nom" required>
+              </mat-form-field><br>
+              <mat-form-field>
+                <mat-label>Date de rendu</mat-label>
+                <input matInput [matDatepicker]="datepicker" placeholder="Entrez Date de Rendue" 
+                formControlName="dateDeRendu" name="date">
+                <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker></mat-datepicker>
+              </mat-form-field>
+              <div>
+                <p>Go to a different step to see the error state</p>
+                <button mat-button matStepperNext>Suivant</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+            <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>étape N° 2</ng-template>
+              <mat-form-field>
+                <mat-label>Selectionner une Matiére</mat-label>
+                <input matInput placeholder="Ex: Grails, NodeJS..." formControlName="matiere"
+                       required>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Auteur</mat-label>
+                <input matInput placeholder="Auteur" formControlName="auteur"
+                       required>
+              </mat-form-field>
+              <div>
+                <p>Go to a different step to see the error state</p>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="thirdFormGroup" errorMessage="Address is required.">
+            <form [formGroup]="thirdFormGroup">
+              <ng-template matStepLabel>étape N° 3</ng-template>
+        
+              <mat-form-field>
+                <mat-label>Note</mat-label>
+                <input matInput type="number" placeholder="Note, Ex: 10, 15.75" formControlName="note"
+                       required>
+              </mat-form-field><br/>
+              <mat-form-field>
+                <mat-label>Remarques</mat-label>
+                <textarea matInput placeholder="Taper une remarques" formControlName="remarques"
+                       required></textarea>
+              </mat-form-field>
+        
+              <div>
+                <p>Go to a different step to see the error state</p>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Fin!!</ng-template>
+            <p>You are now done.</p>
+            <div>
+              
+              <button mat-button (click)="onSubmit($event)">Save</button>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </section>
+    </div>
+  </div>
+
+</mat-drawer-container>
+

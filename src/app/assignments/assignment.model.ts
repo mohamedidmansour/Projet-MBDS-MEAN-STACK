@@ -7,7 +7,7 @@ export class Assignment {
   rendu?: boolean;
   // new Attributs
   auteur: string;
-  matiere:Matiere;
+  matiere:Matiere = new Matiere();
   note: number;
   remarques: string;
 }

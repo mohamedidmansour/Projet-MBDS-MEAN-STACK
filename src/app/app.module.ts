@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
+import {MatStepperModule} from '@angular/material/stepper';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
@@ -31,6 +31,8 @@ import {EditAssigmentComponent} from './assignments/edit-assigment/edit-assigmen
 import {AuthGuard} from './shared/auth.guard';
 import {HttpClientModule} from '@angular/common/http';
 import {LoginPageComponent} from './login-page/login-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 const routes: Routes = [
   {path: '', component: LoginPageComponent},
@@ -96,7 +98,9 @@ const routes: Routes = [
     ScrollingModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatGridListModule
+    MatGridListModule,
+    MatStepperModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
