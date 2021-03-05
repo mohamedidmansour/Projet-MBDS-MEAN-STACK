@@ -33,6 +33,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {LoginPageComponent} from './login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 const routes: Routes = [
   {path: '', component: LoginPageComponent},
