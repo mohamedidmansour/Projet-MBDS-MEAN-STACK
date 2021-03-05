@@ -37,6 +37,17 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {
     path: 'home', component: AssignmentsComponent,
+<<<<<<< HEAD
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'add', component: AddAssignmentComponent,
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'assignment/:id', component: AssignmentDetailComponent,
+    // canActivate: [AuthGuard],
+=======
     //canActivate: [AuthGuard]
   },
   {
@@ -46,11 +57,16 @@ const routes: Routes = [
   {
     path: 'assignment/:id', component: AssignmentDetailComponent,
     //canActivate: [AuthGuard],
+>>>>>>> 0f5c308a563f88c25972b0f49b2a0e66656be7bf
   },
   {
     path: 'assignment/:id/edit',
     component: EditAssigmentComponent,
+<<<<<<< HEAD
+    // canActivate: [AuthGuard],
+=======
     //canActivate: [AuthGuard],
+>>>>>>> 0f5c308a563f88c25972b0f49b2a0e66656be7bf
   },
 ];
 
