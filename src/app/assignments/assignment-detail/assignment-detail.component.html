@@ -1,18 +1,22 @@
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <div class="logo-image-small">
-        <img src="http://miageprojet2.unice.fr/@api/deki/site/logo.png">
+        <!-- <img class="icone-leftbar" src="http://miageprojet2.unice.fr/@api/deki/site/logo.png"> -->
+        <nav class="navbar navbar-light bg-light logo-padding">
+          <a class="navbar-brand" href="#">
+            <img src="https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png" width="150" height="50" class="d-inline-block align-top" alt="">
+          </a>
+        </nav>
       </div>
-      <p>Auto-resizing sidenav</p>
       <mat-selection-list [multiple]="false">
         <mat-list-option>
-          item 1 item
+          Home
         </mat-list-option>
         <mat-list-option>
-          item 2 item
+          List Assignment
         </mat-list-option>
         <mat-list-option>
-          item 3 item
+          Ajouter Assignment
         </mat-list-option>
       </mat-selection-list>
     </mat-drawer>
@@ -24,10 +28,10 @@
         </button>
         <span>MBDS App</span>
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <button mat-icon-button class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
           <mat-icon>favorite</mat-icon>
         </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <button mat-icon-button class="example-icon Position-left" aria-label="Example icon-button with share icon">
           <mat-icon>share</mat-icon>
         </button>
       </mat-toolbar>

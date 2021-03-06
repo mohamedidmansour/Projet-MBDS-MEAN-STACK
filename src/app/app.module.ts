@@ -32,6 +32,7 @@ import {AuthGuard} from './shared/auth.guard';
 import {HttpClientModule} from '@angular/common/http';
 import {LoginPageComponent} from './login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
@@ -101,7 +102,8 @@ const routes: Routes = [
     MatSidenavModule,
     MatGridListModule,
     MatStepperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],

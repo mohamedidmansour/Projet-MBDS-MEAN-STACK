@@ -62,3 +62,9 @@ font-size: xx-large;
   
 }
 
+.Position-left
+{
+  position: relative;
+  left:80%
+}
+

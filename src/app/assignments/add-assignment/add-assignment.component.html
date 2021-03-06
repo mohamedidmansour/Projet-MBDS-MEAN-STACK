@@ -1,55 +1,65 @@
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <div class="logo-image-small">
-      <img src="http://miageprojet2.unice.fr/@api/deki/site/logo.png">
-    </div>
-    <p>Auto-resizing sidenav</p>
-    <mat-selection-list [multiple]="false">
-      <mat-list-option>
-        item 1 item
-      </mat-list-option>
-      <mat-list-option>
-        item 2 item
-      </mat-list-option>
-      <mat-list-option>
-        item 3 item
-      </mat-list-option>
-    </mat-selection-list>
-  </mat-drawer>
-
-  <div class="example-sidenav-content">
-    <mat-toolbar color="primary">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>MBDS App</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon Position-left" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
-    </mat-toolbar>
-    <div class="container">
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <div class="logo-image-small">
+        <!-- <img class="icone-leftbar" src="http://miageprojet2.unice.fr/@api/deki/site/logo.png"> -->
+        <nav class="navbar navbar-light bg-light logo-padding">
+          <a class="navbar-brand" href="#">
+            <img src="https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png" width="150" height="50" class="d-inline-block align-top" alt="">
+          </a>
+        </nav>
+      </div>
+      <mat-selection-list [multiple]="false">
+        <mat-list-option>
+          Home
+        </mat-list-option>
+        <mat-list-option>
+          List Assignment
+        </mat-list-option>
+        <mat-list-option>
+          Ajouter Assignment
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <mat-toolbar color="primary">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>MBDS App</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon Position-left" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+      </mat-toolbar>
+    <div class="container page-height">
       <section class="row">
         <mat-horizontal-stepper #stepper class="col-xl-8 offset-xl-2">
           <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
             <form [formGroup]="firstFormGroup">
               <ng-template matStepLabel>étape N° 1</ng-template> 
-              <mat-form-field>
-                <mat-label>Nom</mat-label>
-                <input matInput placeholder="Nom" formControlName="nom" required>
-              </mat-form-field><br>
-              <mat-form-field>
-                <mat-label>Date de rendu</mat-label>
-                <input matInput [matDatepicker]="datepicker" placeholder="Entrez Date de Rendue" 
-                formControlName="dateDeRendu" name="date">
-                <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-                <mat-datepicker #datepicker></mat-datepicker>
-              </mat-form-field>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-label>Libelle</mat-label>
+                    <input matInput placeholder="Libelle" formControlName="nom" required>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field>
+                      <mat-label>Date de rendu</mat-label>
+                      <input matInput [matDatepicker]="datepicker" placeholder="Entrez Date de Rendue" 
+                      formControlName="dateDeRendu" name="date">
+                      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                      <mat-datepicker #datepicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+              </div>
               <div>
-                <p>Go to a different step to see the error state</p>
+                <!-- <p>Go to a different step to see the error state</p> -->
                 <button mat-button matStepperNext>Suivant</button>
               </div>
             </form>
@@ -57,42 +67,73 @@
           <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
             <form [formGroup]="secondFormGroup">
               <ng-template matStepLabel>étape N° 2</ng-template>
-              <mat-form-field>
-                <mat-label>Selectionner une Matiére</mat-label>
-                <input matInput placeholder="Ex: Grails, NodeJS..." formControlName="matiere"
-                       required>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Auteur</mat-label>
-                <input matInput placeholder="Auteur" formControlName="auteur"
-                       required>
-              </mat-form-field>
+              <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field >
+                      <mat-label>Selectionner une Matiére</mat-label>
+                      <!-- <input matInput placeholder="Ex: Grails, NodeJS..." formControlName="matiere"
+                            required> -->
+                          <mat-select [formControl]="pokemonControl">
+                            <mat-option>-- Matiere --</mat-option>
+                            <mat-optgroup *ngFor="let group of pokemonGroups" [label]="group.name"
+                                          [disabled]="group.disabled">
+                              <mat-option *ngFor="let pokemon of group.pokemon" [value]="pokemon.value">
+                                <div class="row">
+                                  <div class="col-md-6">
+                                      {{pokemon.viewValue}}
+                                  </div>
+                                  <div class="col-md-3 example-header-image">
+                                      <img style="width: 30px;height:30px;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" mat-card-avatar  alt="Photo of a Shiba Inu">
+                                  </div>
+                                  <div class="col-md-3 example-header-image">
+                                      <img style="width: 30px;height:30px;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" mat-card-avatar  alt="Photo of a Shiba Inu">
+                                  </div>
+                                </div>
+                              </mat-option>
+                            </mat-optgroup>
+                          </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-5">
+                  <mat-form-field>
+                      <mat-label>Auteur</mat-label>
+                      <input matInput placeholder="Auteur" formControlName="auteur"
+                              required>
+                    </mat-form-field>
+                </div>
+              </div>
               <div>
-                <p>Go to a different step to see the error state</p>
+                <!-- <p>Go to a different step to see the error state</p> -->
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperNext>Suivant</button>
               </div>
             </form>
           </mat-step>
           <mat-step [stepControl]="thirdFormGroup" errorMessage="Address is required.">
             <form [formGroup]="thirdFormGroup">
               <ng-template matStepLabel>étape N° 3</ng-template>
-        
-              <mat-form-field>
-                <mat-label>Note</mat-label>
-                <input matInput type="number" placeholder="Note, Ex: 10, 15.75" formControlName="note"
-                       required>
-              </mat-form-field><br/>
-              <mat-form-field>
-                <mat-label>Remarques</mat-label>
-                <textarea matInput placeholder="Taper une remarques" formControlName="remarques"
-                       required></textarea>
-              </mat-form-field>
-        
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field>
+                      <mat-label>Note</mat-label>
+                      <input matInput type="number" placeholder="Note, Ex: 10, 15.75" formControlName="note"
+                              required>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-label>Remarques</mat-label>
+                    <textarea matInput placeholder="Taper une remarques" formControlName="remarques"
+                            required></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
               <div>
-                <p>Go to a different step to see the error state</p>
+                <!-- <p>Go to a different step to see the error state</p> -->
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperNext>Suivant</button>
               </div>
             </form>
           </mat-step>
