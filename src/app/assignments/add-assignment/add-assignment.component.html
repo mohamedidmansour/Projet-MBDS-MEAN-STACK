@@ -75,24 +75,22 @@
                       <mat-label>Selectionner une Matiére</mat-label>
                       <!-- <input matInput placeholder="Ex: Grails, NodeJS..." formControlName="matiere"
                             required> -->
-                          <mat-select [formControl]="pokemonControl">
+                          <mat-select formControlName="matiere">
                             <mat-option>-- Matiere --</mat-option>
-                            <mat-optgroup *ngFor="let group of pokemonGroups" [label]="group.name"
-                                          [disabled]="group.disabled">
-                              <mat-option *ngFor="let pokemon of group.pokemon" [value]="pokemon.value">
+                              <mat-option *ngFor="let pokemon of pokemonGroups" [value]="pokemon">
                                 <div class="row">
                                   <div class="col-md-6">
-                                      {{pokemon.viewValue}}
+                                      {{pokemon.libelle}}
                                   </div>
                                   <div class="col-md-3 example-header-image">
-                                      <img style="width: 30px;height:30px;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" mat-card-avatar  alt="Photo of a Shiba Inu">
+                                      <img style="width: 30px;height:30px;" [src]="pokemon.imgProf" mat-card-avatar  alt="Photo of a Shiba Inu">
                                   </div>
                                   <div class="col-md-3 example-header-image">
-                                      <img style="width: 30px;height:30px;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" mat-card-avatar  alt="Photo of a Shiba Inu">
+                                      <img style="width: 30px;height:30px;" [src]="pokemon.imgMat" mat-card-avatar  alt="Photo of a Shiba Inu">
                                   </div>
                                 </div>
                               </mat-option>
-                            </mat-optgroup>
+                            
                           </mat-select>
                     </mat-form-field>
                 </div>
