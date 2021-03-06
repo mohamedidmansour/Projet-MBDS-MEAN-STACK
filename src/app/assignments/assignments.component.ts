@@ -15,6 +15,7 @@ export class AssignmentsComponent implements OnInit {
   titre = 'Mon application sur les Assignments 2 !';
   assignments: Assignment[] = [];
   assignmentSelectionne: Assignment;
+  index:number;
 
 
   showFiller = false;
@@ -41,6 +42,7 @@ export class AssignmentsComponent implements OnInit {
       this.assignments = assignments;
     });
 */
+    this.index=0;
     this.getAssignments();
   }
 
@@ -48,7 +50,7 @@ export class AssignmentsComponent implements OnInit {
   getAssignments() {
     if (!this.nextPage) return;
     this.assignmentsService
-      .getAssignmentsPagine(this.nextPage, this.limit)
+      .getAssignmentsPagine(this.nextPage, this.limit,this.index)
       .subscribe((data: any) => {
         this.page = data.page;
         this.nextPage = data.nextPage;
@@ -110,5 +112,10 @@ export class AssignmentsComponent implements OnInit {
         // effectué !
         console.log(message);
       });
+  }
+
+  filter(index:number)
+  {
+
   }
 }
