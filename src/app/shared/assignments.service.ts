@@ -47,6 +47,8 @@ export class AssignmentsService {
   // url = 'https://apimbds2021.herokuapp.com/api/assignments';
   url = 'http://localhost:8010/api/assignments';
 
+  urlv2 = 'http://localhost:8010/api/assignments';
+
   getAssignments(): Observable<Assignment[]> {
     console.log('Dans getAssignments dans le service...');
     this.loggingService.log('tous les assignments', 'ont été recherchés');
@@ -58,9 +60,23 @@ export class AssignmentsService {
 
   getAssignmentsPagine(
     nextPage: Number = 1,
-    limit: Number = 10
+    limit: Number = 10,
+    index:Number
   ): Observable<Object> {
-    let urlPagination = this.url + `?page=${nextPage}&limit=${limit}`;
+    if(index==0)
+    {
+      this.urlv2 = 'http://localhost:8010/api/assignments';
+    }
+    else if(index==1)
+    {
+      this.urlv2 = 'http://localhost:8010/api/assignments/rendu';
+    }
+    else if(index==1)
+    {
+      this.urlv2 = 'http://localhost:8010/api/assignments/nonrendu';
+    } 
+
+    let urlPagination = this.urlv2 + `?page=${nextPage}&limit=${limit}`;
 
     console.log('Requête paginée envoyée : ' + urlPagination);
     return this.http.get<Object>(urlPagination, this.httpOptions);

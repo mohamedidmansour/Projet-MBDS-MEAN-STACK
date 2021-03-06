@@ -33,8 +33,14 @@ import {HttpClientModule} from '@angular/common/http';
 import {LoginPageComponent} from './login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ChartjsComponent } from './assignments/chartjs/chartjs.component';
+import { Chart1Component } from './assignments/chartjs/chart1/chart1.component';
+
+/////////////////ChartJs
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 
 const routes: Routes = [
   {path: '', component: LoginPageComponent},
@@ -65,6 +71,7 @@ const routes: Routes = [
     component: EditAssigmentComponent,
     // canActivate: [AuthGuard],
   },
+  {path: 'index', component: ChartjsComponent},
 ];
 
 @NgModule({
@@ -79,6 +86,8 @@ const routes: Routes = [
     LeftBareComponent,
     FooterComponent,
     LoginPageComponent,
+    ChartjsComponent,
+    Chart1Component,
   ],
   imports: [
     BrowserModule,
@@ -103,7 +112,9 @@ const routes: Routes = [
     MatGridListModule,
     MatStepperModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxChartsModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

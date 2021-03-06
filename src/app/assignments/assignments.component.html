@@ -38,7 +38,25 @@
       <div class="container" style="margin: 5px;">
           <div class="row">
             <div class="col-md-6">
-                <mat-slide-toggle color="primary" (click)="login()">Log In</mat-slide-toggle>
+                <!-- <mat-slide-toggle color="primary" (click)="login()">Log In</mat-slide-toggle> -->
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                    filter
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click) = "filter(0)">
+                      <mat-icon>assessment</mat-icon>
+                      <span>Tous</span>
+                    </button>
+                    <button mat-menu-item (click) = "filter(1)">
+                      <mat-icon>assignment_turned_in</mat-icon>
+                      <span>Devoire Rendu</span>
+                    </button>
+                    <button mat-menu-item (click) = "filter(2)">
+                      <mat-icon>assignment_late</mat-icon>
+                      <span>Devoire Pas Rendu</span>
+                    </button>
+                  </mat-menu>
             </div>
             <div class="col-md-6">
                 <a routerLink="/add">
