@@ -37,6 +37,27 @@ export class AddAssignmentComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
 
+  ////////////////////////////////Po
+  pokemonControl = new FormControl();
+  /*pokemonGroups: PokemonGroup[] = [
+    {
+      name: 'IT Developpement',
+      pokemon: [
+        {value: 'Conception', viewValue: 'Conception&Dev'},
+        {value: 'Cloud-IT', viewValue: 'Cloud IT'},
+        {value: 'Compilation', viewValue: 'Compilation'},
+        {value: 'Programmation', viewValue: 'Programmation C'},
+        {value: 'Framework Angular', viewValue: ''},
+      ]
+    }
+  ];*/
+  pokemonGroups = [
+    {libelle: 'Conception', imgMat: 'https://material.angular.io/assets/img/examples/shiba2.jpg', imgProf : 'https://material.angular.io/assets/img/examples/shiba2.jpg'},
+    {libelle: 'Cloud-IT', imgMat: 'https://material.angular.io/assets/img/examples/shiba2.jpg', imgProf : 'https://material.angular.io/assets/img/examples/shiba2.jpg'},
+    {libelle: 'Compilation', imgMat: 'https://material.angular.io/assets/img/examples/shiba2.jpg', imgProf : 'https://material.angular.io/assets/img/examples/shiba2.jpg'},
+    {libelle: 'Programmation', imgMat: 'https://material.angular.io/assets/img/examples/shiba2.jpg', imgProf : 'https://material.angular.io/assets/img/examples/shiba2.jpg'},
+    {libelle: 'Framework Angular', imgMat: 'https://material.angular.io/assets/img/examples/shiba2.jpg', imgProf : 'https://material.angular.io/assets/img/examples/shiba2.jpg'},
+  ]
   constructor(
     private _formBuilder: FormBuilder,
     private assignmentsService: AssignmentsService,
@@ -72,7 +93,7 @@ export class AddAssignmentComponent implements OnInit {
     newAssignment.nom = this.firstFormGroup.value.nom;
     newAssignment.dateDeRendu = this.firstFormGroup.value.dateDeRendu;
     newAssignment.rendu = false;
-    newAssignment.matiere.libelle = this.secondFormGroup.value.matiere;
+    newAssignment.matiere = this.secondFormGroup.value.matiere;
     newAssignment.auteur = this.secondFormGroup.value.auteur;
     newAssignment.note = this.thirdFormGroup.value.note;
     newAssignment.remarques = this.thirdFormGroup.value.remarques;
@@ -94,40 +115,4 @@ export class AddAssignmentComponent implements OnInit {
   }
 
 
-  ////////////////////////////////Po
-  pokemonControl = new FormControl();
-  pokemonGroups: PokemonGroup[] = [
-    {
-      name: 'Grass',
-      pokemon: [
-        {value: 'bulbasaur-0', viewValue: 'Bulbasaur'},
-        {value: 'oddish-1', viewValue: 'Oddish'},
-        {value: 'bellsprout-2', viewValue: 'Bellsprout'}
-      ]
-    },
-    {
-      name: 'Water',
-      pokemon: [
-        {value: 'squirtle-3', viewValue: 'Squirtle'},
-        {value: 'psyduck-4', viewValue: 'Psyduck'},
-        {value: 'horsea-5', viewValue: 'Horsea'}
-      ]
-    },
-    {
-      name: 'Fire',
-      disabled: true,
-      pokemon: [
-        {value: 'charmander-6', viewValue: 'Charmander'},
-        {value: 'vulpix-7', viewValue: 'Vulpix'},
-        {value: 'flareon-8', viewValue: 'Flareon'}
-      ]
-    },
-    {
-      name: 'Psychic',
-      pokemon: [
-        {value: 'mew-9', viewValue: 'Mew'},
-        {value: 'mewtwo-10', viewValue: 'Mewtwo'},
-      ]
-    }
-  ];
 }
