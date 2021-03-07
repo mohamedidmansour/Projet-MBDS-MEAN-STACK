@@ -3,6 +3,7 @@ import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignment } from '../assignment.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-assignment-detail',
@@ -22,6 +23,7 @@ export class AssignmentDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getAssignment();
   }
+  private _snackBar: MatSnackBar
 
   getAssignment() {
     // 1 récupérer l'id de l'assignment dans l'URL
@@ -54,9 +56,10 @@ export class AssignmentDetailComponent implements OnInit {
       .subscribe((reponse) => {
         console.log(reponse.message);
         this.assignmentTransmis = null;
-
+        //this.openSnackBar()
         // on retourne à la page d'accueil
         this.router.navigate(['/home']);
+        
       });
   }
 
@@ -69,5 +72,11 @@ export class AssignmentDetailComponent implements OnInit {
 
   loggedIn() {
     return this.authService.loggedIn;
+  }
+
+  openSnackBar() {
+    this._snackBar.open("Bien Suuprimer", "Cancel", {
+      duration: 3000,
+    });
   }
 }
