@@ -29,7 +29,8 @@ export class AssignmentDetailComponent implements OnInit {
     console.log('COMPOSANT DETAIL ID = ' + id);
 
     this.assignmentsService.getAssignment(id).subscribe((assignment) => {
-      //console.log(assignment);
+      console.log("ffffffffffffff",assignment);
+      
       this.assignmentTransmis = assignment;
     });
   }

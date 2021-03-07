@@ -45,9 +45,9 @@ export class AssignmentsService {
   }
 
   // url = 'https://apimbds2021.herokuapp.com/api/assignments';
-  url = 'https://app-assignment-api.herokuapp.com/api/assignments';
+  url = 'http://localhost:8010/api/assignments';
 
-  urlv2 = 'https://app-assignment-api.herokuapp.com/api/assignments';
+  urlv2 = 'http://localhost:8010/api/assignments';
 
   getAssignments(): Observable<Assignment[]> {
     console.log('Dans getAssignments dans le service...');
@@ -65,15 +65,15 @@ export class AssignmentsService {
   ): Observable<Object> {
     if(index==0)
     {
-      this.urlv2 = 'https://app-assignment-api.herokuapp.com/api/assignments';
+      this.urlv2 = 'http://localhost:8010/api/assignments';
     }
     else if(index==1)
     {
-      this.urlv2 = 'https://app-assignment-api.herokuapp.com/api/assignments/rendu';
+      this.urlv2 = 'http://localhost:8010/api/assignments/rendu';
     }
     else if(index==2)
     {
-      this.urlv2 = 'https://app-assignment-api.herokuapp.com/api/assignments/nonrendu';
+      this.urlv2 = 'http://localhost:8010/api/assignments/nonrendu';
     } 
 
     let urlPagination = this.urlv2 + `?page=${nextPage}&limit=${limit}`;
@@ -88,11 +88,11 @@ export class AssignmentsService {
     
     if(index==1)
     {
-      this.urlv2 = 'https://app-assignment-api.herokuapp.com/api/assignments/rendu';
+      this.urlv2 = 'http://localhost:8010/api/assignments/rendu';
     }
     else if(index==2)
     {
-      this.urlv2 = 'https://app-assignment-api.herokuapp.com/api/assignments/nonrendu';
+      this.urlv2 = 'http://localhost:8010/api/assignments/nonrendu';
     } 
 
     console.log('Requête paginée envoyée : ' + this.urlv2);
@@ -100,7 +100,7 @@ export class AssignmentsService {
   }
 
   getAssignmentchartJs(): Observable<Object> {
-    let urlPagination = `https://app-assignment-api.herokuapp.com/api/chart/assignments`;
+    let urlPagination = `http://localhost:8010/api/chart/assignments`;
     console.log('Requête paginée envoyée : ' + urlPagination);
     return this.http.get<Object>(urlPagination, this.httpOptions);
   }
