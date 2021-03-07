@@ -63,3 +63,8 @@
   position: relative;
   left:80%
 }
+.page-height
+{
+  height: 500px;
+  padding: 5px
+}

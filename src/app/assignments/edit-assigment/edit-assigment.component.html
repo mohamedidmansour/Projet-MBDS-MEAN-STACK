@@ -9,15 +9,15 @@
         </nav>
       </div>
       <mat-selection-list [multiple]="false">
-          <mat-list-option routerLink="/home">
-            List Assignment
-          </mat-list-option>
-          <mat-list-option routerLink="/add">
-            Ajouter Assignment
-          </mat-list-option>
-          <mat-list-option routerLink="/chart">
-            Statistique
-          </mat-list-option>
+        <mat-list-option>
+          Home
+        </mat-list-option>
+        <mat-list-option>
+          List Assignment
+        </mat-list-option>
+        <mat-list-option>
+          Ajouter Assignment
+        </mat-list-option>
       </mat-selection-list>
     </mat-drawer>
   
@@ -32,139 +32,120 @@
           <mat-icon>logout</mat-icon>
         </button>
       </mat-toolbar>
-        <div class="container" style="margin: 5px;" *ngIf="assignment">
-          <div class="row">
-            <div class="col-md-3">
-
-  <div class="example-sidenav-content">
-    <mat-toolbar color="primary">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>MBDS App</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon Position-left" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
-    </mat-toolbar>
-  <div class="container page-height">
-    <section class="row">
-      <mat-horizontal-stepper #stepper class="col-xl-8 offset-xl-2">
-        <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
-          <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>étape N° 1</ng-template> 
-            <div class="row">
-              <div class="col-md-6">
-                <mat-form-field>
-                  <mat-label>Libelle</mat-label>
-                  <input matInput placeholder="Libelle" formControlName="nom" required>
-                </mat-form-field>
-              </div>
-              <div class="col-md-6">
-                <mat-form-field>
-                    <mat-label>Date de rendu</mat-label>
-                    <input matInput [matDatepicker]="datepicker" placeholder="Entrez Date de Rendue" 
-                    formControlName="dateDeRendu" name="date">
-                    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-                    <mat-datepicker #datepicker></mat-datepicker>
+    <div class="container page-height">
+      <section class="row">
+        <mat-horizontal-stepper #stepper class="col-xl-8 offset-xl-2">
+          <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>étape N° 1</ng-template> 
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-label>Libelle</mat-label>
+                    <input matInput placeholder="Libelle" formControlName="nom" required>
                   </mat-form-field>
                 </div>
-            </div>
-            <div>
-              <!-- <p>Go to a different step to see the error state</p> -->
-              <button mat-button matStepperNext>Suivant</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
-          <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>étape N° 2</ng-template>
-            <div class="row">
-              <div class="col-md-1">
+                <div class="col-md-6">
+                  <mat-form-field>
+                      <mat-label>Date de rendu</mat-label>
+                      <input matInput [matDatepicker]="datepicker" placeholder="Entrez Date de Rendue" 
+                      formControlName="dateDeRendu" name="date">
+                      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                      <mat-datepicker #datepicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
               </div>
-              <div class="col-md-6">
-                  <mat-form-field >
-                    <mat-label>Selectionner une Matiére</mat-label>
-                    <!-- <input matInput placeholder="Ex: Grails, NodeJS..." formControlName="matiere"
-                          required> -->
-                        <mat-select formControlName="matiere">
-                          <mat-option>-- Matiere --</mat-option>
-                            <mat-option *ngFor="let pokemon of pokemonGroups"
-                            [value]="pokemon" [selected]= "selected === pokemon.libelle">
-                              <div class="row">
-                                <div class="col-md-6">
-                                    {{pokemon.libelle}}
-                                </div>
-                                <div class="col-md-3 example-header-image">
-                                    <img style="width: 30px;height:30px;" [src]="pokemon.imgProf" mat-card-avatar  alt="Photo of a Shiba Inu">
-                                </div>
-                                <div class="col-md-3 example-header-image">
-                                    <img style="width: 30px;height:30px;" [src]="pokemon.imgMat" mat-card-avatar  alt="Photo of a Shiba Inu">
-                                </div>
-                              </div>
-                            </mat-option>
-                          
-                        </mat-select>
-                  </mat-form-field>
+              <div>
+                <!-- <p>Go to a different step to see the error state</p> -->
+                <button mat-button matStepperNext>Suivant</button>
               </div>
-              <div class="col-md-5">
-                <mat-form-field>
-                    <mat-label>Auteur</mat-label>
-                    <input matInput placeholder="Auteur" formControlName="auteur"
-                            required>
-                  </mat-form-field>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+            <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>étape N° 2</ng-template>
+              <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field >
+                      <mat-label>Selectionner une Matiére</mat-label>
+                      <!-- <input matInput placeholder="Ex: Grails, NodeJS..." formControlName="matiere"
+                            required> -->
+                          <mat-select formControlName="matiere">
+                            <mat-option>-- Matiere --</mat-option>
+                              <mat-option *ngFor="let pokemon of pokemonGroups"
+                              [value]="pokemon" [selected]= "selected === pokemon.libelle">
+                                <div class="row">
+                                  <div class="col-md-6">
+                                      {{pokemon.libelle}}
+                                  </div>
+                                  <div class="col-md-3 example-header-image">
+                                      <img style="width: 30px;height:30px;" [src]="pokemon.imgProf" mat-card-avatar  alt="Photo of a Shiba Inu">
+                                    </div>
+                                    <div class="col-md-3 example-header-image">
+                                        <img style="width: 30px;height:30px;" [src]="pokemon.imgMat" mat-card-avatar  alt="Photo of a Shiba Inu">
+                                    </div>
+                                  </div>
+                                </mat-option>
+                              
+                            </mat-select>
+                      </mat-form-field>
+                  </div>
+                  <div class="col-md-5">
+                    <mat-form-field>
+                        <mat-label>Auteur</mat-label>
+                        <input matInput placeholder="Auteur" formControlName="auteur"
+                                required>
+                      </mat-form-field>
+                  </div>
+                </div>
+                <div>
+                  <!-- <p>Go to a different step to see the error state</p> -->
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Suivant</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="thirdFormGroup" errorMessage="Address is required.">
+              <form [formGroup]="thirdFormGroup">
+                <ng-template matStepLabel>étape N° 3</ng-template>
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>Note</mat-label>
+                        <input matInput type="number" placeholder="Note, Ex: 10, 15.75" formControlName="note"
+                                required>
+                      </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <mat-label>Remarques</mat-label>
+                      <textarea matInput placeholder="Taper une remarques" formControlName="remarques"
+                              required></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div>
+                  <!-- <p>Go to a different step to see the error state</p> -->
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Suivant</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Fin!!</ng-template>
+              <p>You are now done.</p>
+              <div>
+                
+                <button mat-button (click)="onSubmit($event)">Save</button>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
               </div>
-            </div>
-            <div>
-              <!-- <p>Go to a different step to see the error state</p> -->
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Suivant</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="thirdFormGroup" errorMessage="Address is required.">
-          <form [formGroup]="thirdFormGroup">
-            <ng-template matStepLabel>étape N° 3</ng-template>
-            <div class="row">
-              <div class="col-md-6">
-                <mat-form-field>
-                    <mat-label>Note</mat-label>
-                    <input matInput type="number" placeholder="Note, Ex: 10, 15.75" formControlName="note"
-                            required>
-                  </mat-form-field>
-              </div>
-              <div class="col-md-6">
-                <mat-form-field>
-                  <mat-label>Remarques</mat-label>
-                  <textarea matInput placeholder="Taper une remarques" formControlName="remarques"
-                          required></textarea>
-                </mat-form-field>
-              </div>
-            </div>
-            <div>
-              <!-- <p>Go to a different step to see the error state</p> -->
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Suivant</button>
-            </div>
-          </form>
-        </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Fin!!</ng-template>
-          <p>You are now done.</p>
-          <div>
-            
-            <button mat-button (click)="onSubmit($event)">Save</button>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-          </div>
-        </mat-step>
-      </mat-horizontal-stepper>
-    </section>
-  </div>
-</div>
-
-</mat-drawer-container>
-
+            </mat-step>
+          </mat-horizontal-stepper>
+        </section>
+      </div>
+    </div>
+    
+    </mat-drawer-container>
