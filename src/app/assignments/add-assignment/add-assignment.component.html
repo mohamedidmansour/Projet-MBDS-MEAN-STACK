@@ -9,15 +9,15 @@
         </nav>
       </div>
       <mat-selection-list [multiple]="false">
-        <mat-list-option>
-          Home
-        </mat-list-option>
-        <mat-list-option>
-          List Assignment
-        </mat-list-option>
-        <mat-list-option>
-          Ajouter Assignment
-        </mat-list-option>
+          <mat-list-option routerLink="/home">
+            List Assignment
+          </mat-list-option>
+          <mat-list-option routerLink="/add">
+            Ajouter Assignment
+          </mat-list-option>
+          <mat-list-option routerLink="/chart">
+            Statistique
+          </mat-list-option>
       </mat-selection-list>
     </mat-drawer>
   
@@ -28,11 +28,8 @@
         </button>
         <span>MBDS App</span>
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
-          <mat-icon>favorite</mat-icon>
-        </button>
-        <button mat-icon-button class="example-icon Position-left" aria-label="Example icon-button with share icon">
-          <mat-icon>share</mat-icon>
+        <button mat-icon-button routerLink="/" class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
+          <mat-icon>logout</mat-icon>
         </button>
       </mat-toolbar>
     <div class="container page-height">

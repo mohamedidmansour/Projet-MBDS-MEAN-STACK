@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Assignments Rendu</h2>
+<mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let a of pageSlice" style="padding: 5px;">
+            <mat-card class="example-card">
+                <mat-card-header class="row"> 
+                <div class="col-md-9">
+                <mat-card-subtitle class="rendu">Date de rendu : {{a.dateDeRendu | date}}</mat-card-subtitle>
+                    </div>
+                <div class="col-md-3 example-header-image">
+                    <img [src]="a.matiere.imgProf" mat-card-avatar  alt="Photo of a Shiba Inu">
+                </div>
+                <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+                </mat-card-header>
+                <img mat-card-image [src]="a.matiere.imgMat" alt="Photo of a Shiba Inu" style="height: 300px">
+                <mat-card-content class="card-con">
+                    <p class="alert alert-dark" *ngIf="a.rendu; else nonsoumis">Devoir intitulé {{a.nom}} rendu.
+                    <br>
+                    Eleve : {{a.auteur}}
+                    </p>
+                    <ng-template #nonsoumis>
+                    <p class="alert alert-danger" [ngClass]="{nonrendu:true}">le devoir {{a.nom}} n'a pas été rendu...
+                        <br>
+                        Eleve : {{a.auteur}}
+                    </p>
+                    </ng-template>
+                </mat-card-content>
+    
+                <mat-card-actions>
+                <button color="primary" mat-raised-button  routerLink="/assignment/{{a.id}}">Details</button>
+                </mat-card-actions>
+            </mat-card>
+            </div>
+        </div>
+        <mat-paginator [length]="this.assignments.length"
+                        [pageSize]="6"
+                        [pageSizeOptions]="[6, 12, 24, 100, 250, 500, 1000]"
+                        (page)="OnPageChange($event)">
+        </mat-paginator>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

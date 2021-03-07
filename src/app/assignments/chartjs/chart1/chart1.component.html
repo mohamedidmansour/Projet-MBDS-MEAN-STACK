@@ -1,20 +1,69 @@
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
     </div>
-    <div class="col-md-8">
-            <ngx-charts-bar-vertical [results]="productSales" [view]="view" [scheme]="colorScheme" [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="xAxisLabel" [yAxisLabel]="xAxisLabel" [legendTitle]="legendTitle" [legendPosition]="legendPosition" [animations]="animations" [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks" [trimYAxisTicks]="trimYAxisTicks"
-            [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength" [maxYAxisTickLength]="maxYAxisTickLength" [xAxisTickFormatting]="formatString" [yAxisTickFormatting]="formatNumber" [yAxisTicks]="yAxisTicks" [showDataLabel]="showDataLabel"
-            [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
-        </ngx-charts-bar-vertical>
+    <div class="col-md-7">
+        <div class="card" style="width:700px;padding: 30px;">
+            <ngx-charts-bar-vertical [results]="NoteResult" [view]="view" [scheme]="colorScheme" [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legendTitle]="legendTitle" [legendPosition]="legendPosition" [animations]="animations" [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks" [trimYAxisTicks]="trimYAxisTicks"
+                [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength" [maxYAxisTickLength]="maxYAxisTickLength" [xAxisTickFormatting]="formatString" [yAxisTickFormatting]="formatNumber" [yAxisTicks]="yAxisTicks" [showDataLabel]="showDataLabel"
+                [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
+            </ngx-charts-bar-vertical>
+            <div class="card-body">
+                <h5 class="card-title">Un graphique à barres</h5>
+                <p class="card-text">Un graphique à barres permet d'afficher les valeurs de données représentées sous forme de barres verticales. C'est la comparaison de plusieurs élèves par leurs notes..</p>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-5">
     </div>
-    <div class="col-md-8">
-            <ngx-charts-bar-horizontal [results]="productSales" [view]="view" [scheme]="colorScheme" [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="yAxisLabel" [yAxisLabel]="xAxisLabel" [legendTitle]="legendTitle" [legendPosition]="legendPosition" [animations]="animations" [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks" [trimYAxisTicks]="trimYAxisTicks"
-            [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength" [maxYAxisTickLength]="maxYAxisTickLength" [xAxisTickFormatting]="formatNumber" [yAxisTickFormatting]="formatString" [xAxisTicks]="yAxisTicks" [showDataLabel]="showDataLabel"
-            [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
-        </ngx-charts-bar-horizontal>
+    <div class="col-md-7" style="margin-top: 50px">
+        <div class="card" style="width:700px;padding: 30px;">
+            <ngx-charts-bar-horizontal [results]="NoteResult" [view]="view" [scheme]="colorScheme" [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="yAxisLabel" [yAxisLabel]="xAxisLabel" [legendTitle]="legendTitle" [legendPosition]="legendPosition" [animations]="animations" [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks" [trimYAxisTicks]="trimYAxisTicks"
+                [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength" [maxYAxisTickLength]="maxYAxisTickLength" [xAxisTickFormatting]="formatNumber" [yAxisTickFormatting]="formatString" [xAxisTicks]="yAxisTicks" [showDataLabel]="showDataLabel"
+                [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
+            </ngx-charts-bar-horizontal>
+            <div class="card-body">
+                <h5 class="card-title">Un graphique à barres horizontal</h5>
+                <p class="card-text">Un graphique à barres horizontal permet d'afficher les valeurs de données représentées sous forme de barres verticales. C'est la comparaison de plusieurs élèves par leurs notes..</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+    </div>
+    <div class="col-md-7" style="margin-top: 50px">
+        <div class="card" style="width:700px;padding: 30px;">
+            <ngx-charts-pie-chart [results]="NoteResult" [view]="viewPie" [scheme]="colorScheme" [gradient]="gradient" [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut" (select)="onSelect($event)" (activate)="onActivate($event)"
+                (deactivate)="onDeactivate($event)">
+            </ngx-charts-pie-chart>
+            <div class="card-body">
+                <h5 class="card-title">Un graphique à Pie</h5>
+                <p class="card-text">Un graphique à Pie permet d'afficher les valeurs de données représentées sous forme de barres verticales. C'est la comparaison de plusieurs élèves par leurs notes..</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+    </div>
+    <div class="col-md-7" style="margin-top: 50px">
+        <div class="card" style="width:700px;padding: 30px;">
+                <ngx-charts-pie-grid [results]="NoteResult" [view]="viewPie" [scheme]="colorScheme" (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+                    </ngx-charts-pie-grid>
+            <div class="card-body">
+                <h5 class="card-title">Un graphique à pie Grid</h5>
+                <p class="card-text">Un graphique à pie Grid permet d'afficher les valeurs de données représentées sous forme de barres verticales. C'est la comparaison de plusieurs élèves par leurs notes..</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+    </div>
+    <div class="col-md-7" style="margin-top: 50px">
+        <div class="card" style="width:700px;padding: 30px;">
+            <ngx-charts-advanced-pie-chart [results]="NoteResult" [view]="viewPie" [scheme]="colorScheme" [gradient]="gradient" (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+                </ngx-charts-advanced-pie-chart>
+            <div class="card-body">
+                <h5 class="card-title">Un graphique à Advanced pie</h5>
+                <p class="card-text">Un graphique à Advanced pie permet d'afficher les valeurs de données représentées sous forme de barres verticales. C'est la comparaison de plusieurs élèves par leurs notes..</p>
+            </div>
+        </div>
     </div>
 </div>

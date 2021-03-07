@@ -5,6 +5,10 @@ import { AssignmentsService } from '../shared/assignments.service';
 import { Assignment } from './assignment.model';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
+import {MatDialog} from '@angular/material/dialog';
+import { Chart1Component } from './chartjs/chart1/chart1.component';
+import { AssignmentsrenduComponent } from '../assignmentsrendu/assignmentsrendu.component';
+import { AssignmentsnonrenduComponent } from '../assignmentsnonrendu/assignmentsnonrendu.component';
 
 @Component({
   selector: 'app-assignments',
@@ -31,7 +35,8 @@ export class AssignmentsComponent implements OnInit {
     private assignmentsService: AssignmentsService,
     private ngZone: NgZone,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
 
@@ -43,14 +48,14 @@ export class AssignmentsComponent implements OnInit {
     });
 */
     this.index=0;
-    this.getAssignments();
+    this.getAssignments(this.index);
   }
 
   // avec pagination...
-  getAssignments() {
+  getAssignments(index:number) {
     if (!this.nextPage) return;
     this.assignmentsService
-      .getAssignmentsPagine(this.nextPage, this.limit,this.index)
+      .getAssignmentsPagine(this.nextPage, this.limit,index)
       .subscribe((data: any) => {
         this.page = data.page;
         this.nextPage = data.nextPage;
@@ -67,6 +72,13 @@ export class AssignmentsComponent implements OnInit {
     //   this.authService.logOut();
     //   this.router.navigate(['/home']);
     // }
+  }
+
+  openDialog1() {
+    this.dialog.open(AssignmentsrenduComponent);
+  }
+  openDialog2() {
+    this.dialog.open(AssignmentsnonrenduComponent);
   }
 
   ngAfterViewInit() {
@@ -93,7 +105,7 @@ export class AssignmentsComponent implements OnInit {
         );
         this.ngZone.run(() => {
           //this.addMoreAssignments();
-          this.getAssignments(); // déjà prêt car nextPage re-initialisé à chaque requête
+          this.getAssignments(this.index); // déjà prêt car nextPage re-initialisé à chaque requête
         });
       });
   }
@@ -112,10 +124,5 @@ export class AssignmentsComponent implements OnInit {
         // effectué !
         console.log(message);
       });
-  }
-
-  filter(index:number)
-  {
-
   }
 }

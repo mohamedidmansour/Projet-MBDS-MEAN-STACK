@@ -9,14 +9,14 @@
         </nav>
       </div>
       <mat-selection-list [multiple]="false">
-        <mat-list-option>
-          Home
-        </mat-list-option>
-        <mat-list-option>
+        <mat-list-option routerLink="/home">
           List Assignment
         </mat-list-option>
-        <mat-list-option>
+        <mat-list-option routerLink="/add">
           Ajouter Assignment
+        </mat-list-option>
+        <mat-list-option routerLink="/chart">
+          Statistique
         </mat-list-option>
       </mat-selection-list>
     </mat-drawer>
@@ -28,11 +28,8 @@
         </button>
         <span>MBDS App</span>
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
-          <mat-icon>favorite</mat-icon>
-        </button>
-        <button mat-icon-button class="example-icon Position-left" aria-label="Example icon-button with share icon">
-          <mat-icon>share</mat-icon>
+        <button mat-icon-button routerLink="/" class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
+          <mat-icon>logout</mat-icon>
         </button>
       </mat-toolbar>
       <div class="container">
@@ -71,13 +68,17 @@
                   </div>
                   <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
                 </mat-card-header>
-                <img mat-card-image [src]="assignmentTransmis.matiere.imgMat" alt="Photo of a Shiba Inu">
+                <img mat-card-image [src]="assignmentTransmis.matiere.imgMat" alt="Photo of a Shiba Inu" style="height: 300px">
               </div>
               <div class="col-md-8" style="padding-top: 10%;">  
                   <mat-card-content class="card-con">
-                      <p class="alert alert-dark" *ngIf="assignmentTransmis.rendu; else nonsoumis">Devoir intitulé {{assignmentTransmis.nom}} rendu.
+                      <p class="alert alert-dark" *ngIf="assignmentTransmis.rendu; else nonsoumis">
+                        Devoir intitulé {{assignmentTransmis.nom}} rendu.
                         <br>
                           Eleve : {{assignmentTransmis.auteur}}
+                          <br>
+                          Matiere : {{assignmentTransmis.matiere.libelle}}
+                          <br>
                         <th>
                           Note : {{ assignmentTransmis.note }}
                         </th>
@@ -86,6 +87,9 @@
                         <p class="alert alert-danger" [ngClass]="{nonrendu:true}">le devoir {{assignmentTransmis.nom}} n'a pas été rendu...
                           <br>
                             Eleve : {{assignmentTransmis.auteur}}
+                            <br>
+                          Matiere : {{assignmentTransmis.matiere.libelle}}
+                          <br>
                         </p>
                       </ng-template>
                       <p class="alert alert-warning">Le(s) remarque(s) : {{assignmentTransmis.remarques}}
@@ -94,16 +98,17 @@
                   <mat-card-actions>
                     <div id="bottom" class="row">
                       <div class="col-md-4">
-                          <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">
-                            Devoir rendu
-                          </mat-checkbox>
+                        <button mat-flat-button  color="primary" [disabled]="!loggedIn()" *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()" aria-label="Example icon button with a bookmark icon">
+                          <mat-icon>bookmark</mat-icon>
+                          Devoir rendu
+                        </button>  
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-3">
                           <button mat-flat-button  class="edit-button" [disabled]="!loggedIn()" (click)="onClickEdit()">
                             EDIT
                           </button>  
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-3">
                           <button mat-flat-button  class="delete-button" [disabled]="!loggedIn()"  (click)="onDelete()">
                             DELETE
                           </button>  

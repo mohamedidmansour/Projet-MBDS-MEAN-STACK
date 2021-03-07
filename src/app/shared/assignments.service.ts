@@ -71,13 +71,36 @@ export class AssignmentsService {
     {
       this.urlv2 = 'http://localhost:8010/api/assignments/rendu';
     }
-    else if(index==1)
+    else if(index==2)
     {
       this.urlv2 = 'http://localhost:8010/api/assignments/nonrendu';
     } 
 
     let urlPagination = this.urlv2 + `?page=${nextPage}&limit=${limit}`;
 
+    console.log('Requête paginée envoyée : ' + urlPagination);
+    return this.http.get<Object>(urlPagination, this.httpOptions);
+  }
+
+  getAssignmentswithoutPagine(
+    index:Number
+  ): Observable<Object> {
+    
+    if(index==1)
+    {
+      this.urlv2 = 'http://localhost:8010/api/assignments/rendu';
+    }
+    else if(index==2)
+    {
+      this.urlv2 = 'http://localhost:8010/api/assignments/nonrendu';
+    } 
+
+    console.log('Requête paginée envoyée : ' + this.urlv2);
+    return this.http.get<Object>(this.urlv2, this.httpOptions);
+  }
+
+  getAssignmentchartJs(): Observable<Object> {
+    let urlPagination = `http://localhost:8010/api/chart/assignments`;
     console.log('Requête paginée envoyée : ' + urlPagination);
     return this.http.get<Object>(urlPagination, this.httpOptions);
   }
@@ -163,12 +186,18 @@ export class AssignmentsService {
 
   peuplerBase() {
     // ici on va générer 500 assignments et les ajouter dans la base
-    bdInitialAssignments.forEach((a) => {
+    bdInitialAssignments.forEach((a:any) => {
       let newAssignment = new Assignment();
       newAssignment.id = a.id;
       newAssignment.nom = a.nom;
       newAssignment.dateDeRendu = new Date(a.dateDeRendu);
       newAssignment.rendu = a.rendu;
+      newAssignment.auteur = a.auteur;
+      newAssignment.matiere.libelle = a.matiere.libelle;
+      newAssignment.matiere.imgMat = a.matiere.imgMat;
+      newAssignment.matiere.imgProf = a.matiere.imgProf;
+      newAssignment.note = a.note;
+      newAssignment.remarques = a.remarques;
 
       this.addAssignment(newAssignment).subscribe((reponse) => {
         console.log('Assignment ' + reponse.message);

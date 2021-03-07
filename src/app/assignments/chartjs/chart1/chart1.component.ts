@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
+import { AssignmentsService } from '../../../shared/assignments.service';
+import { filter, map, pairwise, tap, throttleTime } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Assignment } from './../../../assignments/assignment.model';
 
 @Component({
   selector: 'app-chart1',
@@ -7,112 +12,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Chart1Component implements OnInit {
 
-  productSales = [
+  NoteResult = [
     {
-      "name": "book",
-      "value": 5001
-    }, {
-      "name": "graphic card",
-      "value": 7322
-    }, {
-      "name": "desk",
-      "value": 1726
-    }, {
-      "name": "laptop",
-      "value": 2599
-    }, {
-      "name": "monitor",
-      "value": 705
+      "name": "",
+      "value": 0
     }
   ];
 
-  productSalesMulti = [
-    {
-      "name": "book",
-      "series": [
-        {
-          "name": "January",
-          "value": 125
-        }, {
-          "name": "February",
-          "value": 197
-        }, {
-          "name": "March",
-          "value": 209
-        }
-      ]
-    }, {
-      "name": "graphic card",
-      "series": [
-        {
-          "name": "January",
-          "value": 210
-        }, {
-          "name": "February",
-          "value": 255
-        }, {
-          "name": "March",
-          "value": 203
-        }
-      ]
-    }, {
-      "name": "desk",
-      "series": [
-        {
-          "name": "January",
-          "value": 89
-        }, {
-          "name": "February",
-          "value": 105
-        }, {
-          "name": "March",
-          "value": 66
-        }
-      ]
-    }, {
-      "name": "laptop",
-      "series": [
-        {
-          "name": "January",
-          "value": 178
-        }, {
-          "name": "February",
-          "value": 165
-        }, {
-          "name": "March",
-          "value": 144
-        }
-      ]
-    }, {
-      "name": "monitor",
-      "series": [
-        {
-          "name": "January",
-          "value": 144
-        }, {
-          "name": "February",
-          "value": 250
-        }, {
-          "name": "March",
-          "value": 133
-        }
-      ]
-    }
-  ]
-
-  view: any[] = [700, 370];
+  //Taille
+  view: any[] = [650, 370];
 
   // options
-  legendTitle: string = 'Products';
-  legendTitleMulti: string = 'Months';
+  legendTitle: string = 'Categorie';
+  // legendTitleMulti: string = 'Months';
   legendPosition: string = 'below'; // ['right', 'below']
   legend: boolean = true;
 
   xAxis: boolean = true;
   yAxis: boolean = true;
 
-  yAxisLabel: string = 'Sales';
-  xAxisLabel: string = 'Products';
+  yAxisLabel: string = "Nombre d'élèves";
+  xAxisLabel: string = "Categorie";
   showXAxisLabel: boolean = true;
   showYAxisLabel: boolean = true;
 
@@ -123,7 +43,7 @@ export class Chart1Component implements OnInit {
   rotateXAxisTicks: boolean = false;
 
   xAxisTicks: any[] = ['Genre 1', 'Genre 2', 'Genre 3', 'Genre 4', 'Genre 5', 'Genre 6', 'Genre 7']
-  yAxisTicks: any[] = [100, 1000, 2000, 5000, 7000, 10000]
+  yAxisTicks: any[] = [50, 100, 150, 200, 250, 300]
 
   animations: boolean = true; // animations on load
 
@@ -133,7 +53,7 @@ export class Chart1Component implements OnInit {
 
   gradient: boolean = false;
   colorScheme = {
-    domain: ['#704FC4', '#4B852C', '#B67A3D', '#5B6FC8', '#25706F']
+    domain: ['#a5d6a7', '#66bb6a', '#388e3c', '#1b5e20', '#25706F']
   };
   schemeType: string = 'ordinal'; // 'ordinal' or 'linear'
 
@@ -146,9 +66,22 @@ export class Chart1Component implements OnInit {
   roundEdges: boolean = false;
 
 
-  constructor() { }
+  constructor(
+    private assignmentsService: AssignmentsService
+  ) {}
 
   ngOnInit(): void {
+    this.getchart();
+  }
+
+  // avec pagination...
+  getchart() {
+    this.assignmentsService
+      .getAssignmentchartJs()
+      .subscribe((data: any) => {
+        this.NoteResult = data;
+        console.log(data)
+      });
   }
 
   onSelect(event: any) {
@@ -171,4 +104,11 @@ export class Chart1Component implements OnInit {
     return input
   }
 
+
+  // options of Pie Chart
+  showLegend: boolean = true;
+  showLabels: boolean = true;
+   //Taille
+   viewPie: any[] = [500, 300];
+  isDoughnut: boolean = true;
 }

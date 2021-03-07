@@ -3,3 +3,8 @@
   height: 500px;
   padding: 5px
 }
+.Position-left
+{
+  position: relative;
+  left:80%
+}

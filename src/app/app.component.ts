@@ -14,6 +14,8 @@ export class AppComponent {
   constructor(
     private assignmentsService: AssignmentsService
   ) {
+    //this.assignmentsService.peuplerBase();
+
   }
 
 

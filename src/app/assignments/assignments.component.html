@@ -9,15 +9,15 @@
       </nav>
     </div>
     <mat-selection-list [multiple]="false">
-      <mat-list-option>
-        Home
-      </mat-list-option>
-      <mat-list-option>
-        List Assignment
-      </mat-list-option>
-      <mat-list-option>
-        Ajouter Assignment
-      </mat-list-option>
+        <mat-list-option routerLink="/home">
+          List Assignment
+        </mat-list-option>
+        <mat-list-option routerLink="/add">
+          Ajouter Assignment
+        </mat-list-option>
+        <mat-list-option routerLink="/chart">
+          Statistique
+        </mat-list-option>
     </mat-selection-list>
   </mat-drawer>
 
@@ -28,11 +28,8 @@
       </button>
       <span>MBDS App</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon Position-left" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
+      <button mat-icon-button routerLink="/" class="example-icon favorite-icon Position-left" aria-label="Example icon-button with heart icon">
+        <mat-icon>logout</mat-icon>
       </button>
     </mat-toolbar>
       <div class="container" style="margin: 5px;">
@@ -44,15 +41,15 @@
                     filter
                   </button>
                   <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click) = "filter(0)">
+                    <button mat-menu-item disabled>
                       <mat-icon>assessment</mat-icon>
                       <span>Tous</span>
                     </button>
-                    <button mat-menu-item (click) = "filter(1)">
+                    <button mat-menu-item (click)="openDialog1()">
                       <mat-icon>assignment_turned_in</mat-icon>
                       <span>Devoire Rendu</span>
                     </button>
-                    <button mat-menu-item (click) = "filter(2)">
+                    <button mat-menu-item (click)="openDialog2()">
                       <mat-icon>assignment_late</mat-icon>
                       <span>Devoire Pas Rendu</span>
                     </button>
@@ -79,7 +76,7 @@
                           </div>
                           <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
                         </mat-card-header>
-                        <img mat-card-image [src]="a.matiere.imgMat" alt="Photo of a Shiba Inu">
+                        <img mat-card-image [src]="a.matiere.imgMat" alt="Photo of a Shiba Inu" style="height: 300px">
                         <mat-card-content class="card-con">
                             <p class="alert alert-dark" *ngIf="a.rendu; else nonsoumis">Devoir intitulé {{a.nom}} rendu.
                               <br>
@@ -104,7 +101,6 @@
           </div>
       </div>
   </div>
-
 </mat-drawer-container>
 
 

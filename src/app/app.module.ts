@@ -37,9 +37,13 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ChartjsComponent } from './assignments/chartjs/chartjs.component';
 import { Chart1Component } from './assignments/chartjs/chart1/chart1.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 /////////////////ChartJs
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { AssignmentsrenduComponent } from './assignmentsrendu/assignmentsrendu.component';
+import { AssignmentsnonrenduComponent } from './assignmentsnonrendu/assignmentsnonrendu.component';
 
 
 const routes: Routes = [
@@ -71,7 +75,8 @@ const routes: Routes = [
     component: EditAssigmentComponent,
     // canActivate: [AuthGuard],
   },
-  {path: 'index', component: ChartjsComponent},
+  {path: 'chart', component: ChartjsComponent},
+  {path: 'rendu', component: AssignmentsrenduComponent},
 ];
 
 @NgModule({
@@ -88,6 +93,8 @@ const routes: Routes = [
     LoginPageComponent,
     ChartjsComponent,
     Chart1Component,
+    AssignmentsrenduComponent,
+    AssignmentsnonrenduComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,6 +122,8 @@ const routes: Routes = [
     MatSelectModule,
     NgxChartsModule,
     MatMenuModule,
+    MatDialogModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent],

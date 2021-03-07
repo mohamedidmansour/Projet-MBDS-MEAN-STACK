@@ -12,4 +12,4 @@ export class ChartjsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
+} 
