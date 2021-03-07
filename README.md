@@ -52,8 +52,8 @@ Note: pour utiliser l'application hébergée sur Heroku. utiliser le lien: https
 -	**Heroku**		 : https://app-assignment-front.herokuapp.com/assignment/{id_assignment}/edit
 
 ####  Pour afficher Chart (ngx-charts)
--	**lien en local** : http://localhost:4200/assignment/chart
--	**Heroku**		 : https://app-assignment-front.herokuapp.com/assignment/chart
+-	**lien en local** : http://localhost:4200/chart
+-	**Heroku**		 : https://app-assignment-front.herokuapp.com/chart
 
 
 # Les Captures d'écran de l'application
