@@ -69,7 +69,8 @@
                       <mat-card class="example-card">
                         <mat-card-header class="row"> 
                           <div class="col-md-9">
-                          <mat-card-subtitle class="rendu">Date de rendu : {{a.dateDeRendu | date}}</mat-card-subtitle>
+                          <mat-card-subtitle class="rendu" *ngIf="a.rendu;">Date de rendu : {{a.dateDeRendu | date}}</mat-card-subtitle>
+                          <mat-card-subtitle class="rendu" *ngIf="!a.rendu;">Non Rendu</mat-card-subtitle>
                             </div>
                           <div class="col-md-3 example-header-image">
                             <img [src]="a.matiere.imgProf" mat-card-avatar  alt="Photo of a Shiba Inu">

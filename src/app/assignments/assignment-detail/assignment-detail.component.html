@@ -60,7 +60,8 @@
               <div class="col-md-4">
                 <mat-card-header class="row"> 
                     <div class="col-md-10">
-                      <mat-card-subtitle class="rendu">Date Rendu: {{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
+                        <mat-card-subtitle class="rendu" *ngIf="a.rendu;">Date de rendu : {{a.dateDeRendu | date}}</mat-card-subtitle>
+                        <mat-card-subtitle class="rendu" *ngIf="!a.rendu;">Non Rendu</mat-card-subtitle>
                     </div>
                   <div class="col-md-2 example-header-image">
                     
