@@ -46,11 +46,11 @@ Note: pour utiliser l'application hébergée sur Heroku. utiliser le lien: https
 -	**Heroku**		 : https://app-assignment-front.herokuapp.com/add
 ####  Pour afficher le détail d'un Assignment:
 -	**lien en local** : http://localhost:4200/http://localhost:4200/assignment/{id_assignment}
--	**Heroku**		 : https://app-assignment front.herokuapp.com/assignment/{id_assignment}
+-	**Heroku**		 : https://app-assignment-front.herokuapp.com/assignment/{id_assignment}
 ####  Pour modifier un Assignment:
 -	**lien en local** : http://localhost:4200/assignment/{id_assignment}/edit
--	**Heroku**		 : https://app-assignment front.herokuapp.com/assignment/{id_assignment}/edit
+-	**Heroku**		 : https://app-assignment-front.herokuapp.com/assignment/{id_assignment}/edit
 
 ####  Pour afficher Chart (ngx-charts)
 -	**lien en local** : http://localhost:4200/assignment/chart
--	**Heroku**		 : https://app-assignment front.herokuapp.com/assignment/chart
+-	**Heroku**		 : https://app-assignment-front.herokuapp.com/assignment/chart
