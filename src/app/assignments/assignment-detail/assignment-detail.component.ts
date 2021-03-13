@@ -56,10 +56,9 @@ export class AssignmentDetailComponent implements OnInit {
       .subscribe((reponse) => {
         console.log(reponse.message);
         this.assignmentTransmis = null;
-        //this.openSnackBar()
         // on retourne à la page d'accueil
         this.router.navigate(['/home']);
-        
+        this.openSnackBar()
       });
   }
 

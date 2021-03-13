@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 })
 export class AuthService {
   loggedIn = false;
-  url = 'http://localhost:8010/api/login';
+  url = 'https://app-assignment-api.herokuapp.com/api/login';
 
   constructor(private httpClient: HttpClient,
               private router: Router) {
